@@ -1,0 +1,36 @@
+---
+layout: post
+title: Recent High Profile Outages, Star Wars and the case for consolidation...
+date: 2016-08-12
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/764235406078423040";}}
+  geo_public: '0'
+  _publicize_job_id: '25846301539'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _wpas_skip_10231076: '1'
+  _wpas_skip_10231072: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2016/08/12/the-delta-outage-star-wars-and-the-mainframe/"
+---
+<p><a href="https://mainframedebate.files.wordpress.com/2016/08/screen-shot-2016-08-12-at-18-49-421.png"><img class="wp-image-528 aligncenter" src="{{ site.baseurl }}/assets/2016/08/screen-shot-2016-08-12-at-18-49-421.png?w=300" alt="Screen Shot 2016-08-12 at 18.49.42" width="476" height="211" /></a></p>
+<p>In recent weeks 2 airlines have had high impact, high visibility outages, so the focus is squarely on the impact of an IT disaster, and the reputational brand equity of the company involved.  Delta the Atlanta-based carrier reported a computer outage that caused more than 650 flights to be canceled and more than 2,000 to be delayed. By the end of the day, the system was back online but the ripple of delays continued. So as to make this blog at least somewhat interesting I have decided to spice it up my musings with Star Wars references.</p>
+<p>The point where the CIO quoted Han Solo and said “I have a really bad feeling about this…” is unclear from what you can pick up from the press reports. However, you can certainly tell that they were very unlucky in the first instance and then the downstream impact led into the standard fare of how Disaster Recovery planning is handled.</p>
+<p>From what you can glean from the web, it appears that a generator fire led to a power surge that took out their datacentre, not what was initially reported that it was a Power grid failure, it is amazing how fast blame can be shifted in this type of scenario.  This led to the outage that impacted travelers across the globe which was felt in reservation systems and by Delta staff who were at the sharp end in front of travelers.</p>
+<p>As the <a href="http://www.latimes.com/business/la-fi-delta-grounded-flights-20160808-snap-story.html">LA Times</a>  so succinctly put in their reporting of the Delta outage “Experts have blamed the rash of outages on massive, interconnected computer systems that lack sufficient staff and financial backing.”  The first part of this sentence intrigued me.   Imagine if there were a way to consolidate  web and front end systems onto an architecture, based on say Linux, that could run on the same hardware as the core system of record and provide a massively simplified architecture that could be cleanly failed over in the event of a failure… just imagine… (hint this has only been possible since 2000 its called Linux on z Systems)</p>
+<p>Another element of this story that comes out is Disaster Recovery planning, when did Delta last simulate this type of outage? To quote Yoda, “either do or do not, no such thing as try” this applies as much to Disaster Recovery planning as it does in life.  There is absolutely no point having a ‘plan’ for the event of a disaster if you haven’t tried it, multiple times and regularly.  I don’t think it’s a Star Wars quote, but it should be “Hope is not a strategy”</p>
+<p>In summary if you want massively simplified Disaster recovery the answer is simple massively consolidate your IT estate, the simple equation being less boxes = less to fail over…  If you still have doubts, then as Darth Vader would say “I find your lack of faith disturbing…”</p>

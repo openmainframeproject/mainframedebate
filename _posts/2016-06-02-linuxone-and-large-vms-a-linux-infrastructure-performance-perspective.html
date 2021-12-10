@@ -1,0 +1,43 @@
+---
+layout: post
+title: LinuxONE and large VM's - a Linux Infrastructure performance perspective
+date: 2016-06-02
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Cloud
+- Linux
+- LinuxONE
+tags: []
+meta:
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _publicize_job_id: '23437540788'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/738368418236104706";}}
+  geo_public: '0'
+  _edit_last: '77095863'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2016/06/02/linuxone-and-large-vms-a-linux-infrastructure-performance-perspective/"
+---
+<p>At VM Ware World mid-last year HP, VM Ware and IBM Storage got together to talk about some <a href="http://blogs.vmware.com/performance/2015/08/project-capstone-shows-monster-vm-performance.html">findings</a> they got from internal benchmarks, the even went so far as to produce, a whitepaper was published by the VMware performance folks describing a scalability test of running multiple RedHat Enterprise Linux 6.5 virtual machines under vSphere 5.5 on a 240 core HP Superdome X. While the focus of the study, known as Project Capstone (*), was on the scalability of multiple VMs, we thought it would be interesting to compare how an IBM LinuxONE Emperor machine would perform, using a single Linux partition, to their baseline single virtual machines.</p>
+<p>The study involved running the DVD Store 3 (github.com/dvdstore/ds3), housed in an Oracle 12c database, with a goal of maximizing the Orders Per Minute (OPM) while saturating the CPU. The simulated DVD store process for each order represented a complete login, browsing, and purchasing process which then drove many individual SQL operations against the database. The maximum OPM was achieved using a mixture of agents and threads per agent on a single 32-core Intel machine. For their study, an IBM FlashSystem 840 was used to remove disk latency as a bottleneck; keeping the latency below 0.3 milliseconds.</p>
+<p>IBM introduced simultaneous multithreading capabilities with the Emperor on its LinuxONE cores and to exploit the new function in this study, RedHat 7.2 was required.</p>
+<p>With a limit of 32 LinuxONE cores available on the Emperor machine running the study, two configurations were tested, both with 256GB of memory in the Emperor logical partition; 15 dedicated LinuxONE cores with 30 virtual processors, and 30 dedicated LinuxONE cores with 60 virtual processors.</p>
+<p>Our findings were that the 15 LinuxONE cores / 30 vCPU system achieved very high OPMs at &gt; 95% CPU utilization, with peaks of over 120 thousand OPMs with four agents and 18 threads per agent. This represents about a 3.3x improvement over a similarly configured VM in the Capstone study.</p>
+<p>While not being able to achieve the CPU saturation level on the 30 LINUXONE CORE/ 60 vCPU configuration, the throughput per LINUXONE CORE was generally flat when compared with the 15 LINUXONE CORE/ 30 vCPU configuration. This relationship was observed when running 36 threads against the two configurations. The weighted average OPM per LINUXONE CORE was in the neighborhood of 10 thousand.</p>
+<p>&nbsp;</p>
+<p><a href="https://mainframedebate.files.wordpress.com/2016/06/screen-shot-2016-06-02-at-09-52-50.png"><img class="aligncenter wp-image-505 size-full" src="{{ site.baseurl }}/assets/2016/06/screen-shot-2016-06-02-at-09-52-50.png" alt="Screen Shot 2016-06-02 at 09.52.50" width="938" height="572" /></a></p>
+<p>Our results demonstrate two items of interest. First, the scalability of LinuxONE, and second, the minimization of the multiprocessing effect of increased processors for an individual workload running with LinuxONE.</p>
+<p>If you still want to leverage the VM Ware portfolio but not their ESXi Hipervisor and commodity x86 hardware, then you have options.  The LinuxONE team have been working closely with VM Ware team to ensure their V Realize cloud tool that takes advantage of the OpenStack is able to provision and manage VM’s running on LinuxONE.</p>
+<p>All in all if you are looking at running your Oracle in a  fully supported virtualised envrionment, where you can call Oracle should you have any issues and not have to recreate the issue in parallel physical envrionment and do this with perfromance, availability, sclae and security built in then LinuxONE presents a viable option.</p>
+<p>To try out out the power of LinuxONE, and see for yourself the ease of VM deployment check out the LinuxONE Community Cloud (<a href="http://www.IBM.com/LinuxONE/try">www.IBM.com/LinuxONE/try</a>) where in 4 clicks you will be able to access a no charge VM for 120 days.</p>
+<p>(*)http://www.vmware.com/resources/techresources/10517</p>

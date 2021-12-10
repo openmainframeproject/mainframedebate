@@ -1,0 +1,15 @@
+<h3 class="post-title entry-title">What Are Containers?</h3>
+<div class="post-header"></div>
+<div id="post-body-5728868139043158954" class="post-body entry-content">A container provides an envelope for running an application. Only resources assigned to the container are visible inside the container. All containers running in a system use the same OS kernel, but they don't have visibility to each other. A containerized application usually comes as a set of self-contained files, eliminating all dependencies into the host OS environment.</p>
+<p><a name="more"></a><br />
+Resources are isolated in several ways:</p>
+<ul>
+<li>chroot environments provide an isolated view of a file system.</li>
+<li>Processes inside a container cannot see applications or processes running in the host environment or in another container. Process IDs are independent of any other process IDs used in the host or other containers.</li>
+<li>Network resources like devices and routing tables are scoped to a container. Typically virtual Ethernet devices are used to communicate between these name spaces.</li>
+<li>User IDs are unique to a container, but are independent of other container’s or the host’s user IDs.</li>
+<li>Mount points have their own container-level scope.</li>
+<li>IPC resources (shared memory, semaphores, message queues) are isolated inside a container.</li>
+<li>Host names and NIS domain names are also limited to a container scope.</li>
+</ul>
+<p>So imagine a container is a private system view for an application. It runs in its own chroot environment, and cannot see other processes or users. Containers usually have very low start up times: no OS has to be loaded, just resource scoping has to be established. No full system or para-virtualization is involved to run containers, so they do not add another system virtualization layer (SIE level in mainframe terms). Popular usages of container technology are lxc and Docker.</p></div>

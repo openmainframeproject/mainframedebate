@@ -1,0 +1,41 @@
+---
+layout: post
+title: Evolution of the z System Channel Post 6 – The Transition to FICON
+date: 2017-04-07
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _thumbnail_id: '690'
+  geo_public: '0'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/850335697013755904";}}
+  _publicize_job_id: '3738893997'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=6256101390800687104&type=U&a=mDcV
+  _publicize_done_10182943: '1'
+  _wpas_done_10231076: '1'
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2017/04/07/evolution-of-the-z-system-channel-post-5-the-transition-to-ficon/"
+---
+<p>This is the sixth in a series of posts reflecting on the history of storage attachment for z Systems by Patty Driever, who I strongly recommend you follow on Twitter @mainframeIOlady .  As our mainframe I/O story continues......</p>
+<p>By the late 1990s, the evolution from S/360 to S/390 saw a significant increase in demand for MIPS, main storage, and I/O capacity.  Up to this point I/O capacity had largely been improved through the continued addition of channel paths, thus adding cost, complexity and overall bandwidth available on a system without significant improvement in the capacity of a single channel.  The original 7 channels provided by S/360 evolved to 256 channels provided by S/390, reaching the architectural, programming, and machine limit on the number of channels.  Since processor MIPS were projected to continue to grow, and technology within the storage controllers was also improving along with projected increases in their capacity, the need to significantly improve I/O throughput over a single channel path became clear.</p>
+<p>With that as a backdrop, some things were simultaneously going on in the industry that were relevant.  In the 1988-89 timeframe the American National Standards Institute (ANSI) began a project on developing a standard for Fibre Channel technology, initially with the intent to develop low-cost, higher bandwidth I/O channels that operated efficiently at fiber optic distances....tens of kilometers (IBM was a participant in this).  Early on the Fibre Channel (FC) proponents recognized the value of a layered architecture, one that supported numerous upper level protocols, arguing that the requirements and technologies of LAN and channel applications were converging, and such an approach could deliver excellent performance, cost, and migration characteristics for many applications.  Although the goal of FC as the answer for convergence of LAN and SAN was not realized, and the adoption of Fibre Channel was slow to materialize, by the late 1990s Fibre Channel had indeed found a toehold as a storage interface.</p>
+<p>Within IBM, architects and developers began working on a way to bring the advantages of Fibre Channel to the mainframe and its applications.  As mentioned above, one problem that needed to be solved was to significantly improve the I/O throughput over a single channel path.  As I’ve been describing, decreasing the execution time of a single channel program and improving the data transfer rates of a single channel path were always areas of focus for improved performance, and that was true for this endeavor as well.  As storage controller capacity/density increased, another goal became to provide for more addressable units (devices) attached to a single channel path, and as the media itself became faster, higher bandwidth connections and more efficient data transfer between channels and control units were deemed critical requirements.  As essential as these goals were, of paramount importance to IBM was that they had to be accomplished in a fashion that would preserve the S/390 investment in existing programming....that unique hallmark attribute of the mainframe.  Since the new links would provide for increased distances between the server and storage devices, performance penalties for these increased distances needed to be negligible from what ESCON delivered at shorter distances.  There was a strong focus to utilize the industry standards that were currently being developed for Fibre Channel where they were applicable, and where additional functionality was needed the focus was to drive to develop new industry standards.  THIS was the birth of FICON.  FICON is an industry standard, an upper level protocol mapping of the S/390 architecture over Fibre Channel links, and on Jan. 31 of this year the latest version of the standard, Fibre Channel - Single Byte Command Code Sets - 6 (FC-SB-6), completed an official public review.</p>
+<p>What are some of the characteristics of FICON that resulted in improvements over ESCON? Recall that ESCON (and prior parallel) channels were connection-oriented, where a connection between the channel and device was made and persisted either until the communication was complete or the device explicitly disconnected for a period of time and later reconnected to complete the I/O operation.  FICON channels were connectionless, so frames to multiple devices (and, in a switched topology, to multiple control units) could be in flight on the same physical link at the same time.  A FICON channel supported a number of open ‘exchanges’ (originally 32, later increased), and this dictated the maximum number of active operations that could be in progress from a single channel concurrently.  ESCON switching was done on a connection-basis, while in FICON packets were individually routed based on information in frame headers.  FICON also supported full-duplex data transfers, while ESCON had only supported half-duplex (single direction at a time) ones.</p>
+<p>The same requirement for a migration path from parallel channels and devices to ESCON, supporting investment protection of existing controllers, was also present in the transition to FICON.  The result was a new port card made available in the 9032-5 ESCON Director, which bridged from a single FICON channel to up to 8 ESCON storage controllers, providing a level of relief for clients who were bumping up against the 256 channel path limit.  It was a necessary component of the migration of clients towards a FICON native infrastructure. Bridged FICON allowed some of the benefits of FICON to be realized, in that it supported up to 8 simultaneous transactions and the I/O rate could reach up to 3,200 I/Os per second.</p>
+<p>So what did FICON yield in terms of performance over its predecessor ESCON?  And what was built into FICON and Fibre Channel architecture to facilitate security/integrity, resiliency, and improved performance?  That’s a story for next time.</p>
+<p>&nbsp;</p>

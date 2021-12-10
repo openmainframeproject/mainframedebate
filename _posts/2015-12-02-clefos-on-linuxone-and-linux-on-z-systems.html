@@ -1,0 +1,77 @@
+---
+layout: post
+title: ClefOS on LinuxONE and Linux on z Systems...
+date: 2015-12-02
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Linux
+- LinuxONE
+tags: []
+meta:
+  _edit_last: '77095863'
+  geo_public: '0'
+  _publicize_job_id: '17410759406'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/672117132612624385";}}
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+  _thumbnail_id: '313'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2015/12/02/clefos-on-linuxone-and-linux-on-z-systems/"
+---
+<h1>Introducing ClefOS</h1>
+<p>A few years ago we at Sine Nomine Associates (SNA) were approached by a major ISV who was after a Linux distribution that they could use to create and distribute appliances without having to worry about subscription or licensing issues. They had been using CentOS for their Intel-based appliances but no such distribution existed for z based architectures anymore. The last CentOS distribution was for the 4 series and had not been updated since.</p>
+<p>We created a distribution that tracks CentOS for them starting with CentOS 6.2. We called this distribution ClefOS (Commercial-grade Linux on Enterprise Foundations Operating System). As we are not affiliated with the CentOS project we could not name it CentOS without a heap of legal hurdles etc. and hence the name ClefOS was created.</p>
+<p>ClefOS for z Systems provides a Linux distribution intended to fill the need for a royalty and license free operating system for appliance and utility system construction by anyone wishing to deploy applications on z Systems hardware.</p>
+<p>ClefOS provides:</p>
+<ul>
+<li>A complete Linux distribution that tracks the popular CentOS distribution on Intel systems</li>
+<li>Can be used by end-users and ISVs royalty and license free</li>
+<li>Permits commercial software certified for RHEL to run</li>
+<li>Automatic availability of patches and updates without subscriptions</li>
+</ul>
+<p>Since we released 6.2 in 2012, we have kept the distribution current with the exception of the 7.0 release. In the last couple of months we have made 6.7 and 7.1 available.</p>
+<p>At the moment it’s not obvious from where to download these releases but we are in the process of making a robust portal available for people to use. We will have an announcement in the very near future.</p>
+<p>Commercial support is available for those who require problem reporting, tracking, and fixing.</p>
+<h2>Docker</h2>
+<p>We have been tracking IBM’s work with Docker quite closely and have used our 7.1 release to build several containers we think will be useful to Linux on z users in the field. Images include:</p>
+<ul>
+<li>clefos71-base-s390x - a base image that may be used to build other containers</li>
+<li>clefos71-java-s390x – Java 1.8 SDK used as a base for other images such as tomcat and nodeJS</li>
+<li>clefos71-nodejs-s390x - NodeJS</li>
+<li>django-1.6.11-s390x - a high-level Python Web framework</li>
+<li>earthquake-s390x – terminal-based twitter client</li>
+<li>httpd-2.4.6-s390x – Apache 2.4.6</li>
+<li>lighttpd-1.4.37-s390x – Lightweight webserver lighttpd</li>
+<li>mariadb-5.5-s390x - MariaDB</li>
+<li>mediawiki-1.25.3-s390x – MediaWiki server</li>
+<li>memcached-1.4.15-s390x - a high-performance, distributed memory object caching system</li>
+<li>mongodb-2.6.6-s390x – MongoDB server</li>
+<li>postgresql-9.2.13-s390x – PostgreSQL server</li>
+<li>qpid-s390x - A message broker daemon that receives stores and routes messages using the open AMQP messaging protocol</li>
+<li>redis-2.8.19-s390x - an advanced key-value store</li>
+<li>registry-0.9.1-s390x - Registry server for Docker</li>
+<li>tomcat-7.0-s390x - servlet container that is used in the official Reference Implementation for the Java Servlet and JavaServer Pages technologies</li>
+</ul>
+<p>These are all available at <a href="https://hub.docker.com/u/brunswickheads/">https://hub.docker.com/u/brunswickheads/</a> and should be usable with RHEL.</p>
+<h2>High Availability Option</h2>
+<p>Redhat does not support its High Availability Add-On for RHEL 6 on z based architectures. We had a number of clients who were very keen for such an offering so we built the required packages, gfs2 kernel modules, and z-specific fencing agents. This works on both ClefOS and RHEL.</p>
+<p>HAO provides workload distribution, cluster creation and management software and enterprise-level support for GFS2, a comprehensive cluster-aware file system that is aware of the System z hardware capabilities for zero down time service. The product enables cluster communications via TCPIP and IUCV message transports, and provides the ability to cluster combinations of z/VM guests and LPARs running RHEL on the same physical system or different physical systems (subject to the documented hardware and disk sharing configuration limitations supported by IBM).</p>
+<p>Currently, our clients have over 200 IFLs in production with this facility.</p>
+<h2>Additional Open Source Packages</h2>
+<p>Over the years both our internal and external clients have had needs for packages that haven’t been part of the base RHEL or CentOS systems. We have now developed an extensive portfolio of OSS that will also be made available to the community as soon as our new portal is ready.</p>
+<p>There are nearly 370 packages for both our 6.x and 7.x series of ClefOS that should be usable on RHEL systems as well. The current open source software portfolio may be found at: <a href="https://www.sinenomine.net/products/mainframe-linux/ClefOS_6-packages">https://www.sinenomine.net/products/mainframe-linux/ClefOS_6-packages</a> and <a href="https://www.sinenomine.net/products/mainframe-linux/ClefOS_7-packages">https://www.sinenomine.net/products/mainframe-linux/ClefOS_7-packages</a>. Commercial support is available for these packages as well.</p>
+<h2>Conclusion</h2>
+<p>Both SUSE and Redhat offer very generous trial periods for their distributions. However, it has been our experience that many system administrators are given the task of evaluating Linux on z and LinuxONE and go through the process of organizing a trial but are often required to drop the project as higher priority tasks take precedence. By the time they are ready to resume, the trial period has expired and the process has to be repeated. A ClefOS distribution provides an option that allows them to resume whenever time is available.</p>
+<p><strong>Editors Note:</strong>  Thanks to Neale Ferguson from Sine Nomine Associates as always for his support and really insightful comments.  You can follow Neale on Twitter here @NealeFerguson</p>

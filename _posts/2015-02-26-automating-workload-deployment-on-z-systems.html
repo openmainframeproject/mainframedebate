@@ -1,0 +1,38 @@
+---
+layout: post
+title: Automating Workload Deployment on z Systems
+date: 2015-02-26
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Cloud
+- z13
+tags: []
+meta:
+  _edit_last: '77095863'
+  _publicize_pending: '1'
+  geo_public: '0'
+  publicize_twitter_user: StevenDickens3
+  publicize_twitter_url: http://t.co/IHYRFHn81t
+  _wpas_done_10231072: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:308419468;b:1;}}
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=5976856458610896896&type=U&a=fJO5
+  _wpas_done_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2015/02/26/automating-workload-deployment-on-z-systems/"
+---
+<p>Automating Workload Deployment on z Systems</p>
+<p>One of the primary benefits of adopting cloud computing is the ability to spin up a new environment – primarily for development – in an automated and rapid manner.  Taking the set of usually mundane tasks – allocating network connectivity, configuring security, acquiring software licenses, etc. - and automating them with the right degree of approvals and validations.  Whereas we've been highlighting the strengths of the mainframe in providing secure isolation/multi-tenancy, elastic scaling, chargeback, etc. that characterize cloud computing, we haven't had the self-service portal and the installation scripts to deploy the key workloads on Linux on z Systems – until now.</p>
+<p>IBM has been on an evolutionary journey with our own pattern technology – with our PureApplication system being the poster child for the value of that integration for a wide variety of our IBM middleware.  It includes policies like auto-scaling and the ability to customize and create new patterns that can be optimized for the PureSystems platform.  That pattern engine is also provided as an option with our IBM Cloud Orchestrator product (ICO), which can deploy patterns to any x86, POWER or now z Systems.  These can also be orchestrated via our BPM workflow engine which is part of ICO.</p>
+<p>At the same time, the industry with a number of open source technologies has been evolving in this same space with configuration tools like Chef and Puppet and an orchestration language exemplified by the HEAT Orchestration Template (HOT).  Along with this evolution, an IBM team has been creating a set of patterns (over 200 now) – also called “recipes” as they leverage Chef as the means to deploy them – which represent a significant overlap with the set of workloads that zSystem clients have been running on Linux on z Systems for several years now.  In addition, any of the other patterns that are available on distributed Linux platforms (e.g. Oracle) can be made available to run on Linux on z Systems now.</p>
+<p>What we delivered on February 17<sup>th</sup> was an initial set of a dozen patterns which have been tested and certified to run on Linux on z Systems (both distros).  These are now supported with the Chef client and server which is part of the recently announced IBM Cloud Manager (w/OpenStack).  This release also supports the use of HEAT templates. Coupled with this is the support in UrbanCode Deploy with Patterns that includes support for zSystems (which also supports HEAT).</p>
+<p>The significance of this is that our Linux on z Systems clients now have the full range of support to transition their current IT environment to become a private cloud and to offer those services to their application developers and testers to take full advantage of the speed and agility that cloud (and dev-ops) provides.</p>
+<p>The gloves are off, our hands are untied – it's time for z Systems to enter the ring and battle for private (and/or hybrid) cloud supremacy!   Let's get ready to rumble!!!!!!!!!!</p>

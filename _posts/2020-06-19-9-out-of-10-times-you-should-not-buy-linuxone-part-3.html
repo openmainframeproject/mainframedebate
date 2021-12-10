@@ -1,0 +1,42 @@
+---
+layout: post
+title: 9 out of 10 times you should NOT buy LinuxONE - Part 3
+date: 2020-06-19
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  geo_public: '0'
+  _thumbnail_id: '1037'
+  timeline_notification: '1592582249'
+  _publicize_job_id: '45631816984'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:61:"https://twitter.com/StevenDickens3/status/1274008413127745543";}}
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2020/06/19/9-out-of-10-times-you-should-not-buy-linuxone-part-3/"
+---
+<p>In parts <a href="https://mainframedebate.com/2020/05/28/9-times-out-of-10-you-should-not-buy-linuxone/">1</a> and <a href="https://mainframedebate.com/2020/05/28/when-good-enough-is-not-good-enough/">2</a> of this blog series Steven Dickens covered his views on when to buy LinuxONE and when not to.  In this blog, I plan to cover a more technical perspective on where LinuxONE is a good fit for your workloads and why.</p>
+<p>Broadly speaking, IBM LinuxONE machines are well suited to "throughput" and "workhorse" computing. LinuxONE excels at handling mixed workloads that pressure all basic computing factors (computation, memory, and input/output). Typical examples include large databases with concurrent, long-running programs (such as batch programs) and online programs (such as transaction managers), often with high volume message flows. LinuxONE cache sizes are comparatively enormous, and their cache hierarchies are sophisticated, so they revel in highly virtualized and/or containerized, concurrent workloads. (One lab test on a single, medium-sized LinuxONE machine demonstrated 2 million concurrently executing Docker container images — small ones, but active and operating.) They are excellent platforms for software architectural patterns that emphasize logical separations that would often require physical separation on other platforms to maintain security and operational efficiencies, notably microservices-based application architectures and other "chatty" application landscapes.</p>
+<p>LinuxONE machines are often described as “I/O monsters.” LinuxONE boxes tend to behave well and predictably when stressed, and most clients run them at high processor utilization rates (80% busy or more). That’s because LinuxONE offloads practically all I/O and ancillary processing to supporting processors and assist components, freeing the main processors to focus on primary program execution. LinuxONE architectures are extremely efficient handling floating-point decimal arithmetic (such as IEEE 754-2008), encryption/decryption (such as dm-crypt/LUKS2), hashing, compression/decompression (zlib), and both internal and external networking (e.g. SMC-D) when operating systems and software exploit these features.</p>
+<p>LinuxONE machines are superb Java processors and include processor support (Guarded Storage Facility) for Pause-less Garbage Collection. These characteristics cover a broad range of general business and government computing, especially when high Qualities of Service (QoS) characteristics are essential.</p>
+<p>The world's most urgent QoS requirement concerns security and privacy protection. Unfortunately, there's not a day that goes by without news of yet another security breach: unauthorized releases of personal and private information, theft, and outright fraud. LinuxONE servers incorporate cutting edge security and privacy protection features with world-leading certifications for workload isolation, cryptographic security modules, and protected memory. IBM is working closely with many industries and government, including the digital asset and cryptocurrency industries, to exploit LinuxONE's rich security capabilities to protect digital assets of all kinds from theft, to provide "Data Privacy Passports," and even to lock down whole DevOps build and deployment processes to block malware, ransomware, and backdoors and to thwart both inside and outside attacks. These servers are increasingly vital to civil society itself.</p>
+<p>While they have quite computationally powerful and competent processors, LinuxONE servers are not expressly designed for supercomputing such as weather modeling, protein folding for pharmaceutical research, and digital film/video animation and rendering. (IBM’s Power Servers are world leaders in supercomputing.) Although LinuxONE servers include SIMD vector instructions, they do not contain GPUs. Application components that rely on GPUs will need to run on other servers and then interact with LinuxONE machines via network connections. LinuxONE systems do not contain client programmable FPGAs, and they are certainly not ASICs for cryptocurrency mining.</p>
+<p>LinuxONE machines are not "thread monsters," although they are "thread competent" and combat SMP effects much better than other servers, a valuable trait promoting exceptional vertical scalability and elasticity. A single LinuxONE III LT1 machine can support up to 380 main processor threads (190 cores, SMT2). However, LinuxONE machines practically always serve together with other types of servers in hybrid clouds, just as a conductor and her orchestra (violinists, percussionists, etc.) need each other to make beautiful music together.</p>
+<p><strong>Summary</strong></p>
+<p>LinuxONE is a highly specialized system built with a different design point in mind.  Over these 3 blogs, we have covered the high-level rationale for when to think about LinuxONE and how best to build a mental decision tree of what server architecture best suits the characteristics of your workload.  To find out more about LinuxONE click <a href="https://www.ibm.com/it-infrastructure/linuxone">here</a>.</p>
+<p>Editors Note:</p>
+<p>This blog was written by Timothy Sipples one of the best LinuxONE architects worldwide based out of Singapore.  If you want to engage with Tim he can be followed <a href="https://www.linkedin.com/in/sipples/">here</a> on LinkedIn.</p>
+<p>&nbsp;</p>

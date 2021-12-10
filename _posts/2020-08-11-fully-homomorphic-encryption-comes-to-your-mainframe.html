@@ -1,0 +1,58 @@
+---
+layout: post
+title: Fully Homomorphic Encryption comes to your Mainframe
+date: 2020-08-11
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _wpas_skip_10231076: '1'
+  geo_public: '0'
+  _thumbnail_id: '1105'
+  publicize_twitter_user: StevenDickens3
+  timeline_notification: '1597157204'
+  _publicize_job_id: '47597090818'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:61:"https://twitter.com/StevenDickens3/status/1293197168564568065";}}
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  _edit_last: '77095863'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2020/08/11/fully-homomorphic-encryption-comes-to-your-mainframe/"
+---
+<section class="pdf_page" aria-label="Page 1">
+<div class="textlayer"></div>
+</section>
+<div>
+<p>You might have heard the buzz. Fully Homomorphic Encryption or FHE for short. An IBM Invented technology that has been slowly marching towards viability for over a decade. The math is complex, the engineering challenging, and many problems related to performance and memory consumption needed to be overcome. The academic world has advanced the art and hardware has gotten faster.</p>
+<p>&nbsp;</p>
+<p>In recent months a major research publication detailed the results of a major South American Bank, Banco Bradesco, partnering with IBM to perform a type of fully encrypted machine learning on real client data using FHE. I think the results were astonishing. So, let’s back up, what exactly is FHE? It is a type of cryptography, based on lattices. That isn’t important for this conversation other than it is known to be quantum-resistant. If this means something to you it is a bonus. If not, let us continue with the advantages of FHE. It is similar to some crypto systems you might know like RSA in some ways but very different in others. It is similar to RSA in that it has a concept of a public and private key, but how might use them are entirely different. RSA is encryption generally used to protect data at rest or in transit. You can encrypt your data, but it must be decrypted by a trusted party, or yourself. In other words, to consume the data, or operate on the data, someone must possess a decryption key.</p>
+<p>&nbsp;</p>
+<p>In FHE, one can actually perform computation directly on the data while it remains encrypted. This could be done by the entity that holds the key, or the computation might be outsourced to someone else entirely without decrypting it. It is a vision of a fully secure outsourced computing model, without decrypting anything outside your firewall. It is fundamentally different because it potentially unlocks applications for cloud computing and even data access within an organization. Let us consider internal uses. Maybe you have a sensitive data set but need to perform analytics on that data. Until now there was a “need to know” or legitimate justification for access to raw, or potentially masked, or obfuscated data for the analysts to perform their function. Now, in theory, you can just provide access to the encrypted data if you had your analytics ported to an FHE runtime. It enables a completely trustless kind of blindfolded computation. You still manipulate data, adding, multiplying values, and so forth, but the intermediate results are encrypted and meaningless to the individual or process that does the computation.</p>
+<p>&nbsp;</p>
+<p>We all know there is no free lunch. If you are just hearing about this technology now, you might ask why you haven’t heard about this level of wizardry before. Likely because it was impractically slow and consumed too many resources. Also, it remains a fast-moving research area. But because of Moore’s law, and the advances in algorithmic designs, and a lot of engineering to make the system practical for some workloads and tasks, opportunities are knocking. If you are a CISO, or otherwise concern yourself with data privacy, it is time to have a conversation about fully homomorphic encryption in your organization. It is not a bolt-on type of crypto. The business logic you use needs to be rewritten in an FHE framework. It takes mathematical talent and developer prowess to extract viable performance results, but this capability is not beyond most mainframe organizations.</p>
+<p>&nbsp;</p>
+<p>So, if you think the promise and value of secure outsourced/insourced computing, without the risk of leaking data, is worth the imposition of needing to rewrite some code or experiment a bit, then IBM has something for you, and unlike your lunch, this is indeed gratis. Over the last month, IBM has publicly released Fully Homomorphic Encryption toolkits for a variety of platforms to make experimentation with this technology easier in your organizations. For the mainframe user, the principal place to start is the IBM Fully Homomorphic Encryption Toolkit for Linux. IBM provides a working docker container in choice of Ubuntu or Fedora base OS ready to run. There is no need to wrangle dependencies or deal with obscure math and cryptography libraries to get the examples working. As the toolkit is docker based, the code to build your own instance of the container is freely available in GitHub or you can try one of the pre-built Docker containers from Docker Hub. Either way, you choose to try it, check out GitHub for some scripts that make it easy to stop and start the container if you don’t use Docker desktop. You can run ton just about anything that runs Docker images.</p>
+<p>&nbsp;</p>
+<p>This includes any recent Linux OS deployed on z/VM that can host docker, as well as Linux operating systems running on LPAR that can host docker, and we have tested on z/OS Container Extensions if you are z/OS only shop. Maybe you want to explore it before even trying it on your mainframe. You can run the demos on your Mac, Windows, or Linux laptops that support docker as well.</p>
+<p>&nbsp;</p>
+<p>Regardless of how you get it to try, the toolkit comes with a built-in integrated development environment (IDE) pre-configured with two working FHE use cases to explore. The first is a fully encrypted neural network machine learning example (that demonstrates the inference bits but not the training) in a credit card fraud detection example. This shows how someone might run a machine learning inference in production as a cloud-hosted operation while only sending batches of fully encrypted values to be evaluated by the model in the cloud. The second example we ship demonstrates a fully encrypted key-value pair search that you can trivially modify for your own keys and values assuming you keep them under a character limit. This is a preview of how Key-Value search algorithms work homomorphically or can be seen as a precursor to the value that FHE enabled databases might provide in the future. The full source code is available here in GitHub <a href="https://github.com/ibm/fhe-toolkit-linux">https://github.com/ibm/fhe-toolkit-linux</a></p>
+<p>&nbsp;</p>
+<p>If you like this project give it a star on GitHub to show some support for the development team. The prebuilt Docker images are easily found on Docker Hub in the ibmcom organization: <a href="https://hub.docker.com/search?q=ibmcom%2Ffhe-toolkit&amp;type=image">https://hub.docker.com/search?q=ibmcom%2Ffhe-toolkit&amp;type=image</a></p>
+<p>&nbsp;</p>
+<p>If you are part of the forward-looking group who lean into disruptive technology, we think you will like what you see. This is not a product but a prelude. We want mainframers to help shape the conversation because you house most of the world’s sensitive data. We have included survey links in GitHub and Docker Hub. We invite you to get in touch if you want to become a sponsor user of this technology.</p>
+<p>&nbsp;</p>
+</div>
+<div><strong>Editors Note</strong></div>
+<div>This post was authored by Eli M. Dow, Ph.D. a Senior Technical Staff Member and Master Inventor who has spent his career spanning the Z and Research divisions at IBM. His Ph.D. was in the area of applied machine learning for cloud computing. He is the author of several books, articles, and numerous peer-reviewed academic papers. Eli’s most recent development contributions have been as the lead developer of the IBM Fully Homomorphic Encryption Toolkits. When he is not doing hands-on development, he leads cross-disciplinary, international teams using a startup methodology within IBM to accelerate technology adoption into new products and services.</div>
+<section class="pdf_page" aria-label="Page 3">
+<div class="textlayer"></div>
+</section>

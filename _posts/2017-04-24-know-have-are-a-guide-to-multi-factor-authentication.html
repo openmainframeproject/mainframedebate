@@ -1,0 +1,71 @@
+---
+layout: post
+title: Know, Have, Are - a Guide to Multi-Factor Authentication
+date: 2017-04-24
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _thumbnail_id: '710'
+  geo_public: '0'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/856495296091762688";}}
+  _publicize_job_id: '4336809562'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=6262260991841701888&type=U&a=XUd2
+  _publicize_done_10182943: '1'
+  _wpas_done_10231076: '1'
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2017/04/24/know-have-are-a-guide-to-multi-factor-authentication/"
+---
+<p>&nbsp;</p>
+<p style="text-align:center;"><a href="https://mainframedebate.files.wordpress.com/2017/04/screen-shot-2017-04-24-at-09-05-03.png"><img class="alignnone size-medium wp-image-711" src="{{ site.baseurl }}/assets/2017/04/screen-shot-2017-04-24-at-09-05-03.png?w=300" alt="" width="300" height="174" /></a></p>
+<p>Something you know.</p>
+<p>Something you have.</p>
+<p>Something you are.</p>
+<p>Is it a riddle, or the opening words to a song?</p>
+<p>Multi-Factor Authentication (MFA) improves security levels of the standard User Id and password combinations by introducing factors to increase the likelihood of a successful identification validation. The factors can contain the following:</p>
+<p>Something you know: A username allocated to you by an administrator, an email ID, a password, or a PIN.</p>
+<p>Something you have:  A token which generates One Time Passwords (OTP), an ID card, or a smartphone with a specific application.</p>
+<p>Something you are: Fingerprint, Retina, facial or voice recognition.</p>
+<p>Three levels of authentication can be obtained by using one item from each of these 3 factors – referred to as a 3 level authentication (3LA).</p>
+<p>You might consider Location and Time as two more additional factors.</p>
+<p>A smartphone might be used to scan your fingerprint and then register with a web application running on the mainframe. MFA related information can be added to the mainframe security system to declare MFA attributes related to the user. When the user requests a logon to a mainframe application the smartphone can display the OTP which can be copied to the password field in the application logon screen.</p>
+<p>OTP have a limited time to be used before they expire and a replacement password is generated. Perhaps it is easier to wait for the new one to be issued to maximise the amount of time to enter the details into the logon screen.</p>
+<p>For MFA to be successfully implemented the various factors used must be independent of each other i.e. access to one factor doesn’t automatically grant access to another factor. For example one password doesn’t grant access to the OTP and the email id.</p>
+<p><strong>Flexibility</strong></p>
+<p>MFA is not just focused on the user. Security administrators must also select which applications require MFA for users to logon to them.  The security requirements will change as the application passes through its development, implementation, and maintenance cycles.</p>
+<p>MFA is flexible; there are options at the application level to check whether or not MFA is required. The MFA authentication can be bypassed for specific applications. Similar flexibility is available for users; a particular user can be bypassed within a group even though the rest of the group are required to provide MFA.</p>
+<p><strong>Operational considerations</strong></p>
+<p>The implementation of multi-factor authentication security solution requires appropriate careful planning. Advances in technology enrich software products in functionality but it is the operational deployment that can make a significant difference in how much success the business receives as a result.</p>
+<p>The suggestions below are some of the aspects to consider for inclusion into your plan for implementing MFA.</p>
+<p>A pilot migration to MFA will help you monitor the impact and identify any anomalies in the current practices that may require addressing.</p>
+<p>The help desk (or service line) that deals with logon and security related calls will require education and extended procedures to deal with issues.  Examples could be:</p>
+<p>The user uses a smartphone as part of the MFA but the smartphone has run out of power. The user has a second smartphone device but it is not registered.</p>
+<p>The user is designated as requiring MFA credentials but the user id has expired.</p>
+<p>The user’s password has expired.</p>
+<p>The user does not know if he is expected to supply MFA credentials.</p>
+<p>Allow a grace period for users to have password fallback while they adapt to the new procedures.</p>
+<p>If smartphones are to be used, who will supply the users with the appropriate devices? Are users expected to use their own or will a device be supplied for their use? Do you have a BYOD policy?</p>
+<p>Measure logon data to see how successful the pilot is. During the pilot phase (and throughout the implementation) analyse the logon data to understand the success rate and where problems lie.</p>
+<p>Ensure security administration procedures are in place to deal with the migration schedule.</p>
+<p>Include in your plan how Disaster Recovery (DR) will be handled.  Whether you have a hot site, cold site or somewhere between, you will have to consider how to manage DR testing and invocation.</p>
+<p>The automation procedures will have to track address spaces required for MFA to function and alert immediately if there is a loss of availability.</p>
+<p>Plan your MFA configuration across multiple systems within a sysplex.</p>
+<p>Quality counts in MFA. If you are using fingerprints as part of the credentials the more accurate the image is, the more likely it is to be unique and therefore an effective identity validation. Partial images, or images taken by scanners with a poor resolution might reduce the accuracy of the image.</p>
+<p>The use of additional factors for identity validation improves security levels and is likely to become common practice sooner than we think. Currently PCI DSS v3.2 requires an individual to present a minimum of two separate forms of authentication, before access is granted.</p>
+<p>The success of adopting the MFA approach will depend on your reasons for the implementation, how the deployment is carried out, and your acceptance criteria. Internal and external influences will play a part in the outcome.</p>
+<p>Editors Note: Keith Winnard is a mainframe consultant for Zeebizco Ltd. He recently returned to the UK after completing an engagement with the IBM Redbooks as z/OS project leader in Poughkeepsie, NY. He has 40 years of mainframe experience working within clients and vendors.  Also he is great guy to have a beer with...</p>

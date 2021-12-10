@@ -1,0 +1,43 @@
+---
+layout: post
+title: In the Beginning... a History of the I/O channel
+date: 2017-03-10
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  geo_public: '0'
+  _thumbnail_id: '662'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/840201369978060800";}}
+  _publicize_job_id: '2716007415'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=6245967064767430656&type=U&a=4Vih
+  _publicize_done_10182943: '1'
+  _wpas_done_10231076: '1'
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2017/03/10/in-the-beginning-a-history-of-the-io-channel/"
+---
+<p>Evolution of z Systems Channel – In the Beginning, S/360 &amp; S/370 Architecture</p>
+<p>This is the second in a series of posts reflecting on the history of storage attachment for the z Systems mainframe platform, for more details on what the series plans to cover check out the first blog <a href="https://mainframedebate.com/2017/03/03/back-to-the-future-mainframe-io-and-the-need-for-speed/">here</a>.</p>
+<p>The S/360 computer (introduced in 1964) provided the first real computer architecture, (pause for a minute and let the magnitude of that sink in.....), and offered a range of models with increasing price/performance characteristics by combining hard-wired logic with microcode technology.  The S/360 architecture, documented in what was called the ‘Principles of Operation’, provided the foundation for enabling application programs to migrate forward across machine generations.....a practice that is maintained through to today on z System processors.  In fact a ‘Golden Rule’ of mainframe architecture has been that as new technologies and architectural enhancements appear and are incorporated “The old stuff has to run”.  This is HUGE as it allows for the preservation of years (i.e. $$$) of client (and IBM) investment in applications and channel programs.  Channels on the S/360 were specialized processor engines that were driven by a special instruction set that optimized the transfer of data between attached devices and system main memory.  The architecture of the channel was (and continues to be) independent of the architecture of the devices.</p>
+<p>S/360 and its follow-on S/370 architecture were designed to provide value in key mainframe focus areas: security/integrity, resiliency, and performance.  A host-based configuration definition methodology was introduced in S/370, known to those in the mainframe world as the IOCDS, or I/O Configuration Dataset.  The IOCDS provides security in that it is a type of access control list.....channels (and by inference the host operating systems and applications accessing those channels) are limited in the devices they could access based on what is defined in the IOCDS.  A 4-digit device number initially consisted of the channel identifier (2 digits) and the unit address of the device (the other 2).  Separate control unit/device architecture and operating system usage of that architecture ensured atomicity through capabilities such as reserve/release and extent checking.  Reserve/release is used to not let another program gain access to the device until the complete set of operations is done by the first channel program (e.g. position the disk head, read data before it may be changed by another channel program, etc.).   An extent is a contiguous set of tracks, cylinders, or blocks, and with extent checking the operating system set the extent range to limit the user program to the area of the disk that should be accessible to it.</p>
+<p><img class=" wp-image-660 aligncenter" src="{{ site.baseurl }}/assets/2017/03/screen-shot-2017-03-09-at-16-42-59.png?w=300" alt="" width="466" height="104" /></p>
+<p>A key component of the architecture that was added in S/370 to provide resiliency was known as ‘channel set switching’.  At this point in the system design a set of channels was owned by a single CPU (see picture above), and this ‘channel set switching’ feature allowed an operating system to connect the set of channels of the failing CPU to another CPU.  The architecture itself also provided for detailed state tracking of operations, which facilitates efficient and high-integrity recovery from errors.  Another series of enhancements to the architecture was included over time aimed at improving I/O performance.  Using architecturally defined channel constructs...known as Channel Command Words (CCWs), bi-directional data transfers (reads/writes) and the transfer of non-contiguous portions of the disk were possible in a single I/O operation.  Using flags in the CCW (e.g. ‘Command Chain’, ‘Data Chain’, ‘Suppress Incorrect Length’, ‘Indirect Data Address Word, etc.), multiple commands and data transfers could be combined into a single I/O operation to the device, without requiring status to be presented to the host on every command.</p>
+<p>Security, resilience, and performance architected in.  In the next post I’ll describe the early parallel channels that first implemented this architecture.</p>
+<p>Editors Note: This post was authored by Patty Driever from IBM and is the 2nd post in a series on I/O on the mainframe.  If you like this blog suggest you follow Patty on Twitter @mainframeiolady or check back next week (hopefully Friday) for the next installment.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

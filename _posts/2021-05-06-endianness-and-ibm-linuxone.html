@@ -1,0 +1,133 @@
+---
+layout: post
+title: Endianness and IBM LinuxONE
+date: 2021-05-06 08:06:34.000000000 -04:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _last_editor_used_jetpack: block-editor
+  _wpas_skip_10231072: '1'
+  timeline_notification: '1620306397'
+  _publicize_job_id: '58035892483'
+  _thumbnail_id: '1479'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2021/05/06/endianness-and-ibm-linuxone/"
+---
+<p><!-- wp:paragraph --></p>
+<p>Are you concerned about LinuxONE being “big endian”? Do you understand what “big endian” means? This article attempts to clarify what “endianness” means and why you shouldn’t be overly concerned about it.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>History</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>In 1725, Jonathan Swift unintentionally created a useful term in his work of fiction known commonly as&nbsp;<strong><em>Gulliver’s Travels</em></strong>&nbsp;<a href="//BADA33E0-1BF6-4B14-829B-076B6437CCBF#_ftn1"><sup>[1]</sup></a>. In the book, Gulliver visited the island empire of Lilliput, where breaking an egg from the big end had been outlawed by the grandfather of the then-current emperor. The emperor from two generations earlier had cut his finger while breaking an egg from the big end after which he made it a criminal offense for&nbsp;<em>anyone</em>&nbsp;to break an egg from the big end. Most people complied but there were, of course, people who refused to change, who revolted or emigrated and continued their practice. The emperor referred to these people as “Big Endians”. War almost broke out over the Big Endians wanting to stay Big Endians.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>More than 250 years later, the Internet was being formed. Different computer systems and networks were getting connected together. There was a need to share or pass along information, but there was a problem: different systems stored and shared information in different sequences.&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Some systems stored information using the most-significant byte of a word (the one having the largest value) at the smallest memory address and the least significant byte (the one having the smallest value) at the largest memory address.&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Glossary/Endianness">Mozilla.org</a>&nbsp;makes the analogy of the European date representation of 7 June 2021. Others stored the least-significant byte at the smallest address, Mozilla’s analogy is the International Standards Organization (ISO) date format of 2021-June-7. People on both sides thought theirs was the best way and that the others should change. A war was brewing about the bit order for representing data. It was almost like Lilliput.&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>In his 1980 paper "On Holy Wars and a Plea for Peace", computer networking scientist Danny Cohen pleaded with the community to simply recognize and accept the bit-order differences. He reused Swift’s terms Big-Endian (BE) and added the implied Little-Endian (LE) to indicate which way the data was represented (BE would be 2021-June-7, and LE would be 7 June 2021). His plea was that both should be acceptable, and that systems be made to accommodate endianness. In the end, a compromise was made to use a mix of endianness on the Internet, in both the computer systems and the networking systems.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>Today</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Forty years after Cohen’s paper, there is mostly harmony and acceptance that we exist in a mix-ed endian environment that isn’t likely to change soon. IT companies went through their endianness issues years ago, but there’s still the occasional comment that a difference in endianness could bring business to a halt.&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Those same people don’t tend to mention that MacOS is BE, that Linux servers running using NFS or any RPC-based applications are using BE, even on an LE computer. Dr. Ulrich Weigand, IBM Distinguished Engineer told me, “In addition to the core network packet format and most higher-level network protocols (that were already mentioned), the on-disk metadata for some file systems including XFS and GFS2 is big-endian.&nbsp;&nbsp;Also, the Java native byte order is big-endian, i.e., Java binary files are encoded in big-endian. But I think the most central point to make should be that for an end user, endianness should be completely transparent.&nbsp;&nbsp;It is at most application developers that *may* possibly be affected.”</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>Migrating databases to LinuxONE</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>IBM LinuxONE is a BE system, as are a few others (IBM AIX, IBM Z, HP-UX, Oracle SPARC Solaris, Apple MacOS). Most other servers in a datacenter tend to be LE. Communicating between the two endians is something I was doing 40 years ago. Lots of people smarter than I am (because they made money from it whereas I didn’t) have written tools over the years to handle this.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Let’s say you wanted to move data from a set of x86 servers running IBM Db2 for Linux/UNIX/Windows (LUW) to Db2 LUW on LinuxONE. You could use IBM InfoSphere, IBM MQ, IBM Integration Bus, IBM Cloud Pak for Integration, IBM Cloud Pak for Data, third-party tools or open-source tools to perform the data migration. Or grab a Comp Sci student and have them write it for you. Make it interesting for them by suggesting they compare doing it in different programming languages.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>What if it’s Oracle Database? Oracle owns some BE systems and has supported BE and LE systems for years, so they offer several options. I asked IBM Technical Specialist and Certified Oracle DBA David Simpson what he uses to help customers migrate to LinuxONE. He said he’s used Oracle GoldGate or Oracle Data Pump tools, or in some cases he’s done it manually by using Transportable Database,&nbsp;<a href="http://www.oracle.com/technetwork/database/features/availability/maa-wp-11g-platformmigrationtts-129269.pdf">Transportable Tablespace</a>, or&nbsp;<a href="https://support.oracle.com/knowledge/Oracle%20Database%20Products/371556_1.html">RMAN</a>. IBM also has some options for migrating an Oracle Database environment to LinuxONE: IBM InfoSphere Change Data Capture and/or the IBM Migration Factory tool, Xenobridge.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>Migrating applications to on LinuxONE</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Transporting data from an LE system to a BE system like LinuxONE is no big deal, but What about migrating applications to LinuxONE? I asked IBM Global Technical Sales Leader for LinuxONE, Dr. Andrea Corbelli. He told me “If talking about Oracle WebLogic, after solving the usage of the correct and updated WebLogic version and libraries, then Java is Java, and doesn't suffer from endianness issues. When you have ISV applications, endianness is solved when the app is ported to LinuxONE. When you have custom-developed apps, and you need to do the porting, that is where endianness hits.”</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>I asked Elton de Sousa, a cloud architect at IBM, “Is endianness ever an issue when moving containerized workloads to the LinuxONE architecture?” He responded, “Very rarely and mostly for C/C++ workloads or libraries that are trying to do clever things to improve performance. It was a problem for the runtimes too (Node.js/Java etc.), but once we got the runtimes to understand endianness, everything on the top just worked.” </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><strong><span class="uppercase">Notes</span></strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li>Last updated March 12, 2021:&nbsp;<a href="https://support.oracle.com/knowledge/Oracle%20Database%20Products/371556_1.html">https://support.oracle.com/knowledge/Oracle%20Database%20Products/371556_1.html</a>&nbsp;</p>
+<p>Starting with Oracle Database 10g, you can transport tablespaces across platforms. In this note there is a step-by-step guide about how to do it with ASM datafiles and with OS filesystem datafiles.</p>
+<p>If your goal is to migrate a database to different endian platform, the following high-level steps describe how to migrate a database to a new platform using transportable tablespace:</li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:list {"ordered":true,"type":"1"} --></p>
+<ol type="1">
+<li>Create a new, empty database on the destination platform.
+<ol>
+<li>Import objects required for transport operations from the source database into the destination database.</li>
+</ol>
+<ol>
+<li>Export transportable metadata for all user tablespaces from the source database.</li>
+</ol>
+<ol>
+<li>Transfer data files for user tablespaces to the destination system.</li>
+</ol>
+<ol>
+<li>Use RMAN to convert the data files to the endian format of the destination system.</li>
+</ol>
+<ol>
+<li>Import transportable metadata for all user tablespaces into the destination database.</li>
+</ol>
+</li>
+</ol>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p>You could also convert the datafiles at the source platform and, once converted, transfer them to the destination platform.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><em>Platform Migration Using Transportable Tablespace</em>&nbsp;<a href="http://www.oracle.com/technetwork/database/features/availability/maa-wp-11g-platformmigrationtts-129269.pdf">http://www.oracle.com/technetwork/database/features/availability/maa-wp-11g-platformmigrationtts-129269.pdf</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><em>Converting Data Files</em>&nbsp;<a href="https://docs.oracle.com/en/database/oracle/oracle-database/18/spmdu/converting-data-files.html#GUID-3CF0CDDF-3C65-4254-ADF0-BA3E0908EEE3">https://docs.oracle.com/en/database/oracle/oracle-database/18/spmdu/converting-data-files.html#GUID-3CF0CDDF-3C65-4254-ADF0-BA3E0908EEE3</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><em>Transporting Data Across Platforms</em>&nbsp;<a href="https://docs.oracle.com/en/database/oracle/oracle-database/18/spucd/transporting-data-across-platforms.html#GUID-FE3003B9-605A-4269-B167-005AC778C870">https://docs.oracle.com/en/database/oracle/oracle-database/18/spucd/transporting-data-across-platforms.html#GUID-FE3003B9-605A-4269-B167-005AC778C870</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:list --></p>
+<ul>
+<li><em>Endianness Guidance for Open-Source Projects</em>&nbsp;<a href="https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/javier-perez1/2021/01/19/endianness-guidance-for-open-source-projects">https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/javier-perez1/2021/01/19/endianness-guidance-for-open-source-projects</a></li>
+</ul>
+<p><!-- /wp:list --></p>
+<p><!-- wp:paragraph --></p>
+<p><a href="//BADA33E0-1BF6-4B14-829B-076B6437CCBF#_ftnref1"><sup>[1]</sup></a>&nbsp;Gulliver’s Travels on https://www.gutenberg.org/files/829/829-h/829-h.htm</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:separator --></p>
+<hr class="wp-block-separator" />
+<!-- /wp:separator --></p>

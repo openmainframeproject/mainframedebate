@@ -1,0 +1,44 @@
+---
+layout: post
+title: Evolution of the z System Channel – High Performance FICON
+date: 2017-04-21
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/855405520869523456";}}
+  geo_public: '0'
+  _publicize_job_id: '4236612926'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=6261171214216105984&type=U&a=vYja
+  _publicize_done_10182943: '1'
+  _wpas_done_10231076: '1'
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2017/04/21/evolution-of-the-z-system-channel-post-8-high-performance-ficon/"
+---
+<p>This is the eighth in a series of posts reflecting on the history of storage attachment for z Systems, from Patty Driever, who if you haven't already followed on Twitter then I really suggest you do @MainframeIOLady.</p>
+<p>Hopefully throughout this series you’ve gotten a real sense of the effort placed in z Systems storage channel development on evolving the architecture to capitalize on and continue to grow the strengths of the platform in terms of resiliency and security, while also focusing on improving performance.  As discussed, performance gains were historically achieved not only through advances in technology, but also through architectural enhancements.  Over time it became clear that FICON channels needed such an architectural ‘uplift’ in order to provide competitive throughput and I/O operations/second as link bandwidth improved.  Of course, support for existing channel programs needed to be maintained (investment protection), and the security/resiliency aspects of the architecture could not be compromised.</p>
+<p>The FICON team decided to take advantage of the fact that Fibre Channel Host Bus Adapters (HBAs) have special hardware assists and firmware accelerators that were specifically designed for Fibre Channel Protocol (FCP).  FCP is a method of transferring commands, data, and status, and the most common upper level protocol (ULP) that exploits FCP is Small Computer System Interface (SCSI).  In FCP a single command descriptor block is used to describe the entire operation to the device.  The device driver points the HBA to the block in system memory, and the HBA fetches it and sends it out on the link.  For FICON to exploit this, a means to effectively encapsulate the entire CCW program and send it to the control unit in a single descriptor was devised.  A new mode of operation, called Transport Mode, was architected, and is more commonly referred to as ‘z High Performance FICON’ (zHPF).  The mode of operation for traditional FICON is known as ‘Command Mode’, and a FICON channel supports both Transport Mode and Command Mode concurrently.  Channel and storage controller support for zHPF is exchanged during link initialization.  Some architectural structures of FICON have new, rough equivalents in zHPF, and other new architectural structures were developed.</p>
+<p>zHPF achieves its performance gains by significantly reducing the processing overhead inside the channel and the storage controller, largely due to the means by which the full channel program is delivered in a single package, greatly reducing the ‘chit chat’ on the link required to perform an I/O operation.  To illlustrate, let’s look at an example of how a channel program consisting of four Read commands (each requesting 4k bytes) is executed on the link using both Command Mode and Transport Mode protocols.  Without trying to describe in any detail the ‘Extended Count Key Data’ record format used on traditional z Systems disk storage controllers (as opposed to the ‘Fixed Block’ format used by ULPs such as SCSI), what’s important to note is that the Read commands will be preceded by another command, called the Prefix command, that is used to provide security, integrity and DASD cache management, along with the physical address (cylinder, track, block) of the requested data.</p>
+<p><a href="https://mainframedebate.files.wordpress.com/2017/04/screen-shot-2017-04-21-at-08-50-31.png"><img class=" wp-image-705 aligncenter" src="{{ site.baseurl }}/assets/2017/04/screen-shot-2017-04-21-at-08-50-31.png?w=300" alt="" width="378" height="277" /></a></p>
+<p>What you see above is that when operating in Command Mode this channel program requires 6 sequences to be sent from the channel to the control unit, and 6 sequences to be sent from the control unit back to the channel.  In Transport Mode this same channel program simply requires 1 sequence from the channel to the control unit and 2 in the return direction.  Additionally, in Transport Mode the Cyclic Redundancy Check calculation and verification is done once against the entire data block in Transport Mode, while both the calculation and verification were each performed 4 times in Command Mode.</p>
+<p>What performance improvement was realized?  On z13, if all the operations were performed using the traditional FICON protocol, the maximum number of 4k I/O operations/second that could be achieved on a FICON Express16S channel was approximately 23,000, while if the operations were performed using zHPF that capability rises to 108,000.</p>
+<p>Beyond performance, z channel developers also continuously seize upon opportunities to improve resiliency characteristics, so I’ll briefly describe two of the zHPF-related ones here.  First, applying maintenance concurrently to on-going operations is always a goal of z Systems.  With zHPF a mechanism was put in place to allow the control unit to inform the channel know that it needed to ‘go away’ for a short period of time to apply an update.  The host would stop sending new work, acknowledge the request, and after a period of time it would indicate a desire to restart communications.  This 2-way ‘handshake’ provides a smooth concurrent firmware update mechanism.  A second resiliency enhancement was related to reliably detecting ‘lost initiative’.  Since with zHPF the host sends the entire channel program to the device at one time, and the control may internally queue it based on conditions detected, zHPF provides the host with the ability to interrogate the state of an existing I/O operation.</p>
+<p>Performance, resiliency, security.  Investment protection.  These attributes of z Systems extend into its I/O infrastructure and architecture.  I hope this series has provided you with a new or enhanced appreciation of the journey that has taken z from the days of parallel channel technology and S/360 architecture to the present Fibre Channel and zHPF.  While the z story thankfully continues, this blog series ends.  If there are questions that come to mind or thoughts you have of other mainframe I/O topics of interest to you I’d love to hear about them.</p>
+<p>Editors Note:  This 8 part series has been a really detailed view of the I/O channel, and its development over the last 5 decades.  Patty has done an awesome job of capturing this development concisely, keeping the detail but also making it readable, which given the topic is no mean feat.  I will be summarising all the 8 parts so you can find them easily in the next couple of days as a few of you have asked for that...</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

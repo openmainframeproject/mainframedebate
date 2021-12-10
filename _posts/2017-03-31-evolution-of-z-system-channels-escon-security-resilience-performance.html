@@ -1,0 +1,39 @@
+---
+layout: post
+title: 'Evolution of z System Channels – ESCON: Security, Resilience, & Performance'
+date: 2017-03-31
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _thumbnail_id: '687'
+  geo_public: '0'
+  _publicize_job_id: '3481073920'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/847795761727328256";}}
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=6253561454708953088&type=U&a=NCuC
+  _publicize_done_10182943: '1'
+  _wpas_done_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2017/03/31/evolution-of-z-system-channels-escon-security-resilience-performance/"
+---
+<p>This is the fifth in a series of posts reflecting on the history of storage attachment for z Systems from Patty Driever also known as @MainframeIOLady on Twitter, you should really check out the four proceeding blogs they are very insightful.</p>
+<p>In the last entry in this sequence I talked about the introduction of S/370-XA architecture, and the advances that it brought to mainframe I/O, and how mainframe I/O was further enhanced by the transition to ESCON channels.  This entry will describe how ESCON channels and the associated architecture also continued to build upon the absolutely foundational aspects of security/integrity, resiliency, and performance of the mainframe I/O subsystem.  So let’s continue.....</p>
+<p>ESCON I/O configuration integrity checking was provided with enhancements such as resetting event architecture and self-describing devices.  Whenever ANY event occurs at the storage controller that causes a system reset to occur on a logical path (e.g. power on of the controller or a command received from the host to reset a path), the controller will present a special status indication in response to the first (next) operation driven down that path.  Upon receipt of this status the host program validates the identity of device on that channel path to ensure that no unanticipated or undesired configuration change occurred.  To facilitate this, a new instruction, Request Node Identifier, allowed the operating system to obtain self-description information identifying the specific physical device at the end of the link, and the operating system could use this information to revalidate attachments after such ‘resetting event’ conditions.  For example, you couldn’t pull a cable from one device and plug it into a different one without the operating system being able to detect what happened.</p>
+<p>With the introduction of dynamic switching, additional integrity/security and resiliency measures were added.  Fixed link addressing was added to the IOCDS to control host access to control unit resources....a host could only access a device at the end of links attached to specific switch ports defined in the IOCDS.  An architectural enhancement related to improved resiliency in a switched environment was the addition of a State Change Notification (SCN).  An SCN was sent by the fabric to each link level facility (channel or control unit) which was potentially affected by state changes (i.e. down/up) in switch ports or connected channels or control units.  These explicit indications that something has changed in the SAN facilitate better recovery than if the changes must be deduced from a series of I/O operation timeouts or ‘trial and error’ accesses.</p>
+<p>ESCON channels also achieved better performance through streamlining of command chaining and data transfer.  In parallel channels, when commands were chained together, after status was sent in for one command the channel would go through the device selection sequence again.  With ESCON, the channel responded to status directly with the new command.  Buffering in the channels and control units was also an enhancement that allowed removal of some of the data transfer interlocks, which, in turn, resulted in increased throughput and performance at distance. At the start of each command, the receiver of the data would make an initial data request to the sender for the receiver's entire buffer size. The sender would start to transfer the data, and would set a 'Ready' indication in the first frame of the transfer. Upon receipt of the Ready indication, the receiver of data could send another data request equal to the size of the first frame. As long as the subsequent data request arrived at the sender before the last frame of the initial data request had been sent, the data transfer could continue with no gaps. Thus the full line rate could be achieved at much greater distances than were possible with the parallel interface.</p>
+<p>Beyond security/integrity, resiliency, and performance, the other key attribute of concern for mainframe innovations is investment protection.  When ESCON was delivered there were a significant number of storage controllers that supported parallel interfaces deployed by clients worldwide.  As a result, IBM introduced the 9034 ESCON converter product which allowed I/O control units to attach using the parallel interface ‘bus and tag’ cables, and ESCON channels (operating in ESCON Converter mode, which operated at the maximum parallel data rate of 4.5MB/second) to attach using their serial interface fiber-optic cables.  The 9034 handled the protocol conversion between ‘bus and tag’ and fiber-optic protocols.  There was also a 9035 product that did the reverse...it allowed older servers that only supported parallel channels to connect to it along with storage controllers with ESCON interfaces.</p>
+<p>ESCON was a key technological achievement for IBM mainframe I/O channels, and provided a solid basis for what was to follow.  Hope this blog series is painting a picture of how the mainframe has integrated the progression of technology with an unparalleled architecture to provide key value propositions for z Systems clients.</p>
+<p>&nbsp;</p>

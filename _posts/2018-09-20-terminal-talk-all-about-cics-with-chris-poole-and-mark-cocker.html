@@ -1,0 +1,202 @@
+---
+layout: post
+title: 'Terminal Talk: All About CICS with Chris Poole and Mark Cocker'
+date: 2018-09-20
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _thumbnail_id: '868'
+  timeline_notification: '1537456382'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _publicize_job_id: '22349612347'
+  _edit_last: '77095863'
+  geo_public: '0'
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+author:
+  login: jbisti
+  email: jbisti@us.ibm.com
+  display_name: terminaltalk
+  first_name: Terminal
+  last_name: Talk
+permalink: "/2018/09/20/terminal-talk-all-about-cics-with-chris-poole-and-mark-cocker/"
+---
+<p>CICS is one of the most widely used pieces of middleware on the Z platform. So why is it so hard getting a straight answer about what it is and what it does? Thankfully, we've got Chris and Mark here to talk about why CICS is so popular, where it's headed, and how you can learn more.</p>
+<p>To listen to this episode, search for "Terminal Talk" on your podcast platform of choice. iTunes users can go <a href="https://itunes.apple.com/us/podcast/terminal-talk/id1246775230?mt=2" target="_blank" rel="noopener">HERE</a> to subscribe. The episode is also available as a raw MP3 file <a href="http://terminaltalk.net/PodcastGenerator/?name=episode_56_-_chris_poole_and_mark_cocker_-_9.17.2018.mp3">HERE</a>.</p>
+<p>As always, please drop us a line on Twitter, we're <a href="http://twitter.com/TerminalTalk">@TerminalTalk </a></p>
+<p>Transcript as follows is machine-generated and may not be 100% accurate. For the best experience, make sure to listen to the audio.</p>
+<p><!--more--></p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Ladies and gentlemen, before we get started with this episode, just wanted to drop a little bit of warning.  This is one of those SHARE episodes.  And while we are very happy that we got to meet with so many people and record at Share, the audio quality is not quite up to our standard - our usual standard.</p>
+<p>It’s still a great episode.  There’s a lot to be learned from it.  But yes, it’s a little bit echo-ey, a little bit uneven.  Did what we could.  But we think you’re at least getting your money’s worth out of this.</p>
+<p>Frank de Gilio:      Yes, and before we start, it would be good to plug our sponsor, right?</p>
+<p>Jeff Bisti:              Yes, we have a sponsor.</p>
+<p>Frank de Gilio:      Hard to believe that somebody would pay us.</p>
+<p>Jeff Bisti:              We want to get more.</p>
+<p>Frank de Gilio:      Oh, yes, being at Poughkeepsie, we really get at opportunities to talk to a lot of really cool, technical people.  Also, the ones we meet at conferences like Share give us a great opportunity.</p>
+<p>Jeff Bisti:              Rubbing shoulders with geniuses.</p>
+<p>Frank de Gilio:      Yes, let’s go with that.  But you, actually as our listeners, have an opportunity to get in touch with some of these people as well, right?  This new program…</p>
+<p>Jeff Bisti:              Right, you don’t have to wait for us to have somebody on Terminal Thought to find out the skinny on what you’re working on. There’s this great new program called Expert Advice for Z.  You go to IBM.biz/z_consult.  And you fill out this form.</p>
+<p>It really couldn’t be easier.  You say, I’m working on this, I’m stuck on this, I need some help, this is the time when I’m available.  And IBM will get you - give you a call back, pair you up with the expert who’s going to be able to help you out, and help you get un-stuck.</p>
+<p>This is not a replacement for opening up a defect or your IBM rep or anything like that. It’s just a way of moving things along and getting you in touch with somebody who’s going to passionate about helping you out a little bit.</p>
+<p>Frank de Gilio:      Yes, and you’ll notice when you check this out that you’ll be talking to our kind of people - people who’ve been on Terminal Thought, people like Anthony Sofia, Rosalind Radcliffe, top tier Terminal Talk alumni.  Yes, people that you actually want to talk to.  You wouldn’t get time with Frank and Jeff, no.  Real people.</p>
+<p>Jeff Bisti:              Yes, real people, real solutions, Expert Advice for Z, IBM.biz/z_consult.</p>
+<p>Frank de Gilio:      And now on to our conversation with Mark Cocker and Chris Poole.  Welcome to Terminal Talk, a podcast on mainframe and mainframe related topics. I’m Frank.</p>
+<p>Jeff Bisti:              I’m Jeff.</p>
+<p>Frank de Gilio:      And we’re here with two CICS guys.  I was going to say, two old CICS guys.  But there’s only one old CICS guy and one young CICS guy.</p>
+<p>Jeff Bisti:              I don’t see age.</p>
+<p>Frank de Gilio:      That’s the first time.  So, could you guys introduce yourselves?  I think that’d be a little bit easier.  Chris?</p>
+<p>Chris Poole:          Yes, sure.  So, hi.  I’m Chris Poole.  I’m a software engineer.  I used to be in the CICS team in Hursley.  I’ve moved onto different things the past several months.  I’ve sent a number of years in the CICS team.</p>
+<p>Frank de Gilio:      And also a key moderator of the mainframes of that.</p>
+<p>Chris Poole:          Yes, absolutely.  The mainframes of that - I spent quite a bit of time there.  Tried to start new additions.  Ask me anything sessions there.</p>
+<p>Jeff Bisti:              Also a top tier Terminal Thought subscriber.</p>
+<p>Frank de Gilio:      That’s true, that’s true.  You can hear those episodes that nobody else did.</p>
+<p>Jeff Bisti:              Top tier.  They were really good, weren’t they?</p>
+<p>Chris Poole:          Sure.</p>
+<p>Jeff Bisti:              And then Mark?</p>
+<p>Mark Cocker:        Yes, hi.  I’m Mark Cocker.  So, I’m a software engineer in the CICS development team in Hursley.  So, yes, I’m perhaps one of the old guys because I’ve been with CICS the last 27 years or so.</p>
+<p>Frank de Gilio:      That’s sizable.  That’s almost older than you are, right?</p>
+<p>Jeff Bisti:              I’ll go with that.  We’re all getting up there in age.</p>
+<p>Frank de Gilio:      So, let me start first, guys.  What the heck is CICS?  And why should I care?</p>
+<p>Mark Cocker:        So, in old money, CICS is a transaction server and deals with transactions.  And these days I think we tend to brand it as an applications server.  We like to view it as the world’s best mixed language applications server because it’s got a number of different languages.</p>
+<p>Chris Poole:          But it still fundamentally is a transaction server.</p>
+<p>Jeff Bisti:              So, as I write an application, it does a thing. I’m happy with my program.  Where does CICS come into this?</p>
+<p>Chris Poole:          So, the idea is that - what CICS does is, it brings to the table the - all the complex parts of the operations.  So, you should be able to write your application and say, I want to, as part of this transaction, take some cash from here or withdraw cash from here from this account.</p>
+<p>But what happens if it goes wrong?  What happens if there’s some issue as you’re doing this, as you’re halfway through the transaction?  You need to be able to back that out and move the cash back to where it originally was - all that kind of stuff.  So, what CICS does is, it handles all that logic for you.  So, you can easily have that few complexities taken away basically.</p>
+<p>Jeff Bisti:              So, instead of having to write that and do all the stuff that I don’t want to do, I get to say, Hey, CICS, handle this?</p>
+<p>Mark Cocker:        Yes, pretty much.  Yes, that’s a thought.  Yes, so, I guess CICS is coming up now for 50 years old next year.</p>
+<p>Jeff Bisti:              Wow.</p>
+<p>Mark Cocker:        So, the original types of applications being written - you had developers who wanted to write very simple business logic using compilers like Cobalt.  And they wanted very simple ways of connecting with databases using SQL.</p>
+<p>So, CICS really allows all of the resource managers - maybe DB2, maybe MQ, maybe (unintelligible) - and allows the application with very simple ATI’s to connect to that data and then draw everything together in a single transaction essentially.</p>
+<p>And as Chris was saying, takes out the complexities.  So, when you’re reading the application, it’s very simple to look at, to understand, to maintain.</p>
+<p>Frank de Gilio:      And over the years, you guys have added more and more services to do in different things, right?  Would you say that the stuff that’s being done today is more complex than those original managed transactions?  Or would you say that what you’re doing now is more nuance-ive stuff that’s already there?</p>
+<p>Mark Cocker:        So, I think the back-end logic that handles the data and, if you like, the business side of how that data is connected to the business, is very much the same these days.  What’s changed is the front-end piece - how to engage with customers.</p>
+<p>So, we’ve moved away from being a sort of client server architecture in the past to much more applications that run on mobile devices, on (unintelligible), and even these days, inside a speaker, if you like.</p>
+<p>And so, all of these different front-end applications that are coming in now - there’s a new breed of developers writing those applications and looking to use their skills not only to write front end to the applications but also those more of the back end.</p>
+<p>So, from a CICS point of view, we want to build the skills of those developers onto the mainframe and allow them to be productive.</p>
+<p>Frank de Gilio:      Now, has CICS always been done in Hursley? Did it start in Hursley?</p>
+<p>Mark Cocker:        Yes, so, the heritage - CICS started off in the U.S. And after a few years, it became productized.  So, rather than being written specifically for one finger, one application, it was commercialized into a product.  And at that stage, it was moved over to Hursley to be developed into a broader appeal transaction server as it is today.</p>
+<p>So, yes, we’ve seen obviously many generations of CICS - new versions coming out.  And I think one thing CICS has always been good at is leading the way to bringing new technology to the mainframe to attract developers.</p>
+<p>So, where the mainframe comes out with these great new widgets and it does all these new things, that’s no good unless you can try and bring the developers on board to write applications and make use of that.  And that’s where CICS I think, really brings value.</p>
+<p>Frank de Gilio:      So, being from Hursley, you guys can answer this questions.  Is it CICS? Or is it C-I-C-S?</p>
+<p>Chris Poole:          I think it’s CICS.  It depends where you go to.  At one time, when I used to come over to the U.S. to do presents, I subconsciously would start staying C-I-C-S in the U.S.  But I usually stick to CICS now, I think.</p>
+<p>Frank de Gilio:      And what does C-I-C-S stand for?</p>
+<p>Mark Cocker:        Customer Information Control System, although it’s - I don’t know.  We never really think about it as that anymore.</p>
+<p>Chris Poole:          Yes, as they say, it’s not an acronym.  It’s what we do.</p>
+<p>Jeff Bisti:              Do you happen to remember, or can we talk about, what customer or what that first application of C-I-C-S was that spawned this?</p>
+<p>Chris Poole:          I’ve got no idea.  It was well before my time.</p>
+<p>Jeff Bisti:              Okay.</p>
+<p>Mark Cocker:        It was U.S. utility company.  I think it was a water company.  But I could be wrong there.  There are some things - actually that makes sense.  Originally, it was called P-U CICS - Public Utility CICS. So, maybe it was for some sort of water company or something.</p>
+<p>Jeff Bisti:              Let’s go with that.</p>
+<p>Frank de Gilio:      Yes, there’s nobody here that will say that’s a lie.</p>
+<p>Mark Cocker:        I’m sure somebody will write in…</p>
+<p>Jeff Bisti:              I’m glad somebody changed it from P-U CICS though.</p>
+<p>Frank de Gilio:      You guys have been doing this - you’ve been doing this, Mark, for a long time.  Chris, you’ve actually been working on it for a few years, too, right?</p>
+<p>Chris Poole:          About four years, now, yes.  I joined IBM outside of the mainframe organization in 2012. After about 18 months or so, I moved into the CICS team towards the end of 2013.  And then until mid-last year, I was in the CICS team.</p>
+<p>Frank de Gilio:      So, what are you doing now?</p>
+<p>Chris Poole:          So, I moved across to work on system record integration with Blockchain for a while - the thing we don’t speak of.  That was quite good.  And then the thing I’m doing right now is an extension of that, really. So, then we moved on to think about this logic called Hyper Protect, in the sense that the IBM Cloud grounded a set of services.</p>
+<p>And the thing we’re doing in Hursley in particular is a thing called Hyper Protect containers.  So, the idea is to try and extend the kubernetes one time, like we have in IBM Cloud.  But we’re going to put it on the mainframe using the technology called secure service containers, which basically allows us to encrypt it and protect against certain attack vexes.</p>
+<p>Frank de Gilio:      But you’re not doing that in CICS.</p>
+<p>Chris Poole:          We’re not doing that in CICS, no.  But CICS can still come into it because ultimately it might just be a micro-service somewhere.  And you might want to call out from CICS to a micro-service or the other way around.</p>
+<p>There’s been a general move in the last few years to acknowledge that at some point CICS and DB2 may be a bit for storage whereas the back of this application - you call through all this different loops and you end up in CICS.  It would do the whole transaction.  It would write stuff to DB2 or (unintelligible).</p>
+<p>And then it would go all the way back, whereas now, CICS is no longer that thing at the end.  It’s often something in the middle.  And it’s calling out to external services.  The last thing I did before I moved out of CICS org was to do the asynchronous ATI.  And part of that was to be able to cater to this kind of change.</p>
+<p>So, you need to be able to work out what is an external service and is it performing well. What if it’s taking too long?  We don’t want to have to be sat waiting for this thing to be unreliable.  So, we need to be able to do things to cope against that.  And the a-synch is the stuff that came out of that.</p>
+<p>Jeff Bisti:              What’s being done with CICS?  Obviously, you walk into an account and you say, are you using CICS or the other thing?  And there’s always an answer.  What can be done, or what is being done, to educate people on what you can do in a CICS-type environment, for new types of businesses?</p>
+<p>Mark Cocker:        So, we’ve got some - a lot of material that’s aimed at newcomers to bring CICS - so maybe, a new systems programmer that’s taking on that role can make an adjustment and folks here at the Share conference who are in that. And, so, that kind of material we are providing from a range of web books.</p>
+<p>But also, we’re providing podcasts.  We’re providing support on different websites, like the developer mainframe sites.  And we’re providing a series of videos.  So, just, what is CICS - so, very much introductory material broken down into five- or ten-minute videos - consumable thought for someone who’s perhaps heard about it, perhaps been an application developer in the past and are taking on that role.</p>
+<p>Chris Poole:          The other thing we’ve been trying to do as well is to get more blogs out.  So, if you write the CICS desk, go to IBM.com/CICS.  And you can read a bit of blogs.  And that will be regularly updated.  And then instead of just having the code in the blog post, we’ve been putting the code on Get Hooked as Apache Two licensed.  So, it’s completely open sourced.</p>
+<p>And the nice thing about that is, at one time, I think the idea was that you go and read the manual.  Or, these days you don’t need the (unintelligible) center.  And then you’re just left to your own devices to try and work out how to do something.</p>
+<p>Whereas if you start with some existing program that you know works, you just have to be able to take that code, compile it in your system and then run it.  And then at least it gives you somewhere to get started from, which is a lot more powerful. And so, now we’ve got lots of examples for Java and Node JS - lots of Cobalt examples for some to get help.</p>
+<p>Jeff Bisti:              So, if somebody is a sys-prog or whatever, and they just hear this stuff about CICS, but it’s just a job they start, make sure it’s up every once in a while, how can somebody start learning?  Would you recommend starting with the blogs and the podcasts?</p>
+<p>Mark Cocker:        Yes, the blogs and podcasts - that kind of stuff is good.  There’s also a number of good web books as well that I would recommend.  There’s an early textbook - I think around 2001 - which is kind of outdated because it’s a number of years old now.</p>
+<p>But it’s surprisingly still pretty good to be able to learn the basics from because CICS has been going for so long that all the basics haven’t been changed for a long time.  And you can still learn, what is the definition?  What’s the program?  What’s the transaction?  Those things haven’t changed for 30 years or so.</p>
+<p>Frank de Gilio:      Now, let’s say I wrote an application 30 years ago. Stop laughing.  How hard would it be to take that application and make it useful in the new modern world?</p>
+<p>Mark Cocker:        It depends what you want to do.  But presumably, you may want to just expose it to the interfaces or something like that.  So, if that was written in PL1 or Cobalt, which is probably our two most popular languages, I think, for customers to write programs in, you’re going to want to expose that to them somehow.</p>
+<p>And there’s other products we have called U.S. Connect.  And the idea behind that is to be able to expose different services on the mainframe as interfaces.</p>
+<p>Frank de Gilio:      I was going to say, we got him to say…</p>
+<p>Jeff Bisti:              I can edit this up.</p>
+<p>Mark Cocker:        And that’s basically it.  You can make co-changes.  You can just say, okay, stuff’s going to do this to transform. It knows what kind of data is accepting on the common area or on the trials and containers.  And then it can go back and the U.S. Connect will do its transform on the way out.</p>
+<p>If you didn’t want to do that, you can write your own code.  So, we put Java in CICS.  And we have things like the access to the JBM server.</p>
+<p>Chris Poole:          Or, indeed, we have the liberty requirements as well that can run it by CICS.  So, depends where your skills are and whether you want to use a sort of tooling approach like the U.S. Connect where you don’t write any code.</p>
+<p>You’re literally importing copy books using a nice graphic forwarding to create the right binaries that are used at run time for the transform.  Or you can write code like Java or other languages.</p>
+<p>Mark Cocker:        Absolutely.</p>
+<p>Jeff Bisti:              CICS and Cobalt is kind of like peanut butter and jelly.  It’s almost - for a while, you would think it was one word.  CICS and Cobalt - is that the majority of the environment?  Or is Java becoming one of the more prevalent ones?</p>
+<p>Mark Cocker:        Java is definitely becoming a lot more prevalent. And we also support…</p>
+<p>Jeff Bisti:              Take that, (Rich).</p>
+<p>Mark Cocker:        We do see support because first we support C. We support Assembler.  And in order to end customers, we’ll write a lot of stuff in Assembler.  Or maybe they take these programs that need to be really performance and then write that in Assembler, everything else in Cobalt.  I think there’s a bit of divide between the U.S. and Europe in Cobalt and PL1.</p>
+<p>Chris Poole:          Yes, certainly a lot of our European customers use PL1 quite extensively and exclusively sometimes.   They’re more actively not likely to use Cobalt.  But yes, there’s probably 50% of our customers who are using Java at the moment.</p>
+<p>So, I think what happens is, as the mix of skills in our customers changes over time, we will find new applications being written using new skills and new languages.  But the great thing about CICS is it doesn’t de-value.  So, it’s applications are being written in the part.</p>
+<p>So, that mix and match and taking the right approach for that particular application, be it through performance sensitive or be it something very Java based for the wet skills, that mix and match approach means that everyone can happily live in the same environment.</p>
+<p>Frank de Gilio:      Do I pay a performance penalty for running Java in CICS or Cobalt, either one?</p>
+<p>Mark Cocker:        Yes, so, the mainframe, as you may be aware, has hardware assist to run Java applications.  And also, over time there have been new instructions that have been introduced into the hardware that are specifically geared toward executing Java in a performance way.</p>
+<p>So, yes, in the past, 20 years ago, Java on the mainframe was executing slower than Cobalt.  But these days, not only is Java executing really well, but it can be run on these special engines which have different pricing structures around them. And that means it can actually be cheaper to run those applications than to run the equipment in other languages.</p>
+<p>Chris Poole:          Yes, I think the instructions came in in late ’13 and helped performance and energy forcing to do some stuff to be able to help the garbage collection times.  Obviously, Java is Java, a garbage collected language.</p>
+<p>You have to occasionally see the spite where things that pause right to collect the objects that aren’t being used anymore.  And there’s some work in the V14 to reduce that time.</p>
+<p>Jeff Bisti:              I believe the term is, pause less.  No, not - why would you think that?</p>
+<p>Frank de Gilio:      You mentioned before - or I thought you mentioned before, Chris, that you can do node there?</p>
+<p>Chris Poole:          Yes, so, something that we’ve introduced - this actually goes back to what Mark was saying right at the start of the podcast, that we’re always trying to keep up with the latest languages and use cases for CICS and requirements.  One thing that we’ve recently done that’s in the fine dot fibers  right now - actually I think Mark’s going to present later today at Share, if you happen to be at Share…</p>
+<p>Jeff Bisti:              Do I have a time machine?</p>
+<p>Chris Poole:          Is Node JS support, basically.  So, this is again - it’s going back to recognizing that the developers that write the front-end for these different applications, they may use Java scripts.  And they may be using Java scripts to write the front-end pieces of their application but couldn’t use that language across the whole stack.  And that means, can you write it in the third type component as well?</p>
+<p>Node JS has been really popular in the distributive world for exactly that reason, that you can take this one language and you can run it in lots of different places.  And now we’ve got Node JS on Z.  And we’ve got support for it within the CICS environment as well.  It’s actually what makes CICS really powerful, I think.</p>
+<p>So, you can have these different programs written in different languages.  Because we have this thing called The Exact CICS API - so, you can say, exact CICS link and then its name, into the program to link to.  And it doesn’t really matter what that other language is in.  It can hop across.  And there’s a few differences.</p>
+<p>You can’t quite do that with Java every time.  And depending on how you get its alignment, if you have your CICS program in Liberty, you have to switch to different.  But we’ve even got that kind of support.</p>
+<p>So, in 5-3, I think we introduced Link to Liberty, which allows you to take a Cobalt program and literally link across to a Java program.  And then that thing can hop back.  And it can do all kinds.</p>
+<p>Frank de Gilio:      Can you describe why I’d want to run the Liberty in CICS as opposed to outside of CICS?</p>
+<p>Jeff Bisti:              Good question.</p>
+<p>Mark Cocker:        Yes, so, the Liberty environment provides a higher-level sort of API to developers.  So, if they want to access databases in a transactional way, that’s not provided as part of the standard Java API’s.  It’s provided as part of what we refer to JTA - the Java transactional API.  And there are other kinds of end surprise services like that to access messages with JMS.</p>
+<p>And so, those Java enterprise API’s - J-E-E API’s that we sometimes refer to - is provided for by a product that IBM has open sourced with Link called Liberty.  And so, that’s a run time that sits on top of Java that provides all of these Java E API’s.</p>
+<p>And we quickly saw the nice synergy between the Java environment, those enterprise API’s and running those inside of CICS because it gives you a way of writing applications that can run on different platforms that maybe it was originally running in a Lenox environment.</p>
+<p>And you can take those same applications as they’re currently packaged and deploy them into CICS.  And they’ll all run just fine in the CICS environment.  So, it allows you to potentially hold located those applications from other platforms into the mainframe environment and run them with the data that they are accessing at the local services.</p>
+<p>So, you get the performance benefits.  And you also get the co-location, which can give you management benefits because you’re not managing several environments that need to interconnect through the network.  They’re simplifying the environments in the architecture.</p>
+<p>Chris Poole:          Yes, that’s the helpful thing, really.  If you’re in a shop where you’ve got CICS running and you get asked to, we need to run Liberty for Java and we need it to try to work out, well, how to address space?  How do I define this?  How do I store these things from a CICS front point of view?</p>
+<p>It’s a whole new process of things to learn of how to deploy and manage with these things, whereas if you have Liberty in CICS, it’s just another resource, basically. And if you’re already used to deploying things like CICS window, you can define the web space server within the CICS window.  And it’s just a business as usual type of thing.</p>
+<p>It’s not much harder.  So, if you’ve already got sys-progs and they’re CICS sys-progs, they’re used to doing that.  Just another thing.</p>
+<p>Jeff Bisti:              So, if I’ve in the past couple of years, written a new JS program, it’s out there on the Cloud somewhere, and I’m running into scalability issues or something like that - I have an opportunity to run this on the day, and I find out that I can actually integrate my Node JS with CICS, what are the steps involved, or who should I call - what do I do to start that process of making it into a big boy program?</p>
+<p>Mark Cocker:        So, the ability to run those Node JS applications in CICS is part of a beats program at the moment.</p>
+<p>Jeff Bisti:              Right, but I like to live dangerously.  I’m all in.</p>
+<p>Mark Cocker:        Absolutely.  So, what will typically happen is, you’ll have the source code for that application on a source code management system - maybe CICS for example - within your organization.  And you can simply get it now supported on COS, as a lot of technical sources in fact.</p>
+<p>So, you can use - you can store gifs, as an example, on COS.  It would get pulled for that project.  And because it’s a node application, you’d typically need to install other packages. So, there’s another tool that comes with node called NTN.  And that can be used to install those dependencies on the fall system on COS.</p>
+<p>And at that point, if you have the IBM master case in those, you can then execute - you can run the application in a batch environment in the command line on Z.  And if everything’s going well with the application, you can then create a CICS bundle and point to that application from that CICS bundle and install that inside the CICS address space.</p>
+<p>And then, it can be managed by CICS systems programmer by simply installing that resource - that CICS bundle.  So, when they enable that resource, the application will be stood up and running inside the CICS address space.  So, when you disable the resource, it’s taken down.</p>
+<p>So, that would not be the ideal dev-ops pipeline to build and deploy an application. But at its simplest form, it’s a matter of moving the source code, installing its dependencies, betting it works fine on ZOS, which there are some dependencies out there which have natives written in z-code.</p>
+<p>So, if those are downloaded and compiled, there is a slight chance that there may be some issues there.  But providing those dependencies install fine, it’ll run completely fine on it.</p>
+<p>Jeff Bisti:              Okay.</p>
+<p>Frank de Gilio:      We’re running a little low on time.  But I can’t let you guys get away without answering this question.  So, why is CICS better than, say, IMS?</p>
+<p>Jeff Bisti:              Or a train, which I can also afford?</p>
+<p>Mark Cocker:        I think that’s a difficult - so, the reality is that a lot of people do use both, right?  There are some shops that only CICS or only use IMS.  And I know a number of customers that use both for different reasons.  And IMS is different in that it integrates the database and stuff like that right, whereas CICS for business integration - if you want a database…</p>
+<p>Chris Poole:          It can access it, right?</p>
+<p>Mark Cocker:        Accept that it will be found, yes.</p>
+<p>Frank de Gilio:      It would probably have the same personnel.</p>
+<p>Jeff Bisti:              Yes, that’d be great.</p>
+<p>Frank de Gilio:      That’d be good.</p>
+<p>Chris Poole:          Yes, so, IMS is really two - there’s really two parts to IMS.  One is a transaction manager.  And one is a database.  So, in essence, we have a lot of CICS customers who use the IMS database portion. Our customers will tend to run one transaction manager or another.  And sometimes that’s just due to the heritage of the customer and their skill set.</p>
+<p>But also there are some industries like the airline industry that are exclusively deploying IMS based applications to their integration within the industry.  But dare I say it, there are many other industries where CICS is used in preference because there’s a lot more flexibility needed for applications.</p>
+<p>And as I say, CICS has always led the way in terms of bringing those new skills to the platform.  But maybe I’m biased.</p>
+<p>Frank de Gilio:      I was going to say, and you heard it here first. The CICS guys say that their stuff blows IMS away because it’s better on every front.  That’s what I heard.</p>
+<p>Jeff Bisti:              You might want to check your ears.  But what I did notice is, every time they mentioned IMS, they held their nose and made these stinky motions.</p>
+<p>Frank de Gilio:      There was a lot of cringing.  There was a lot of cringing.</p>
+<p>Jeff Bisti:              Yes, but the coupling of IMS to a database seems to be the takeaway from - the key difference.</p>
+<p>Chris Poole:          I think so.  I don’t really know much about IMS at all.  But there is a number of differences.  But like Mark says, I think it depends what you want to get out of it and what you’re trying to do.  So, a lot of shops use both because they bring different things to the table.</p>
+<p>Frank de Gilio:      Cool.  Well, thank you guys for being a part of this.  This has been awesome.</p>
+<p>Chris Poole:          You’re welcome.  Thanks, Frank.  Thanks, Jeff.</p>
+<p>Jeff Bisti:              Thank you for coming all the way here just for this.</p>
+<p>Mark Cocker:        So, where’s Charlie?</p>
+<p>Frank de Gilio:      He’s over there in the closet where we keep him.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Do you want to go do the honors?</p>
+<p>&nbsp;</p>
+<p>Mark Cocker:        No, I’ll leave that to you.</p>
+<p>&nbsp;</p>
+<p>Frank de Gilio:      Old man (Charlie), run us out.</p>
+<p>&nbsp;</p>
+<p>Charlie Lawrence:You’ve been listening to Terminal Talk with Frank and Jeff.  For questions or comments, or if you have a topic that you would like to see covered on a future episode, direct all correspondence to <a href="mailto:contact@terminaltalk.net">contact@terminaltalk.net</a>.  That’s <a href="mailto:contact@terminaltalk.net">contact@terminaltalk.net</a>.  Until the next time, I’m Charlie Lawrence, signing off.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>END</p>
+<p>&nbsp;</p>

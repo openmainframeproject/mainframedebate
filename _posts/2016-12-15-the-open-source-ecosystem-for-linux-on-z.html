@@ -1,0 +1,221 @@
+---
+layout: post
+title: The Open Source Ecosystem for Linux on z
+date: 2016-12-15
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  geo_public: '0'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/809485992038121473";}}
+  _publicize_job_id: '30034690002'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=6215251685632151552&type=U&a=ucCm
+  _publicize_done_10182943: '1'
+  _wpas_done_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2016/12/15/the-open-source-ecosystem-for-linux-on-z/"
+---
+<p><a href="https://mainframedebate.files.wordpress.com/2015/12/screen-shot-2015-12-08-at-15-43-44.png"><img class="size-medium wp-image-313 aligncenter" src="{{ site.baseurl }}/assets/2016/12/screen-shot-2015-12-08-at-15-43-44.png?w=300" alt="Screen Shot 2015-12-08 at 15.43.44" width="300" height="226" /></a></p>
+<p>As we approach the 17<sup>th</sup> anniversary of IBM publishing its mainframe-enabling patches to the Linux kernel on the Marist college website, it seems appropriate to look at the state of open source software ecosystem on z.</p>
+<p>Since the “Marist Distribution”, as it came to be known, we have seen enormous commitments to the ecosystem by distributors, vendors, and the community. Between the commercial distributions of SUSE, Red Hat, and Ubuntu we have tens of thousands of packages available. The community distributions such as ClefOS, Slackware, and others have also added many thousands more.</p>
+<p>For several years, we at Sine Nomine, have made open source packages available to the community: There is hardly a Linux on z customer who has not used SWAPGEN in their environment. In addition, we have built FOSS for our clients and ourselves and made the available from our website. There are in the order of 1,000 packages for the community to use. We even offer support for those who need it.</p>
+<p>The list of packages available for ClefOS 6 and 7 that are also usable on RHEL may be found at:</p>
+<ul>
+<li><a href="http://www.sinenomine.net/products/mainframe-linux/ClefOS_6-packages">http://www.sinenomine.net/products/mainframe-linux/ClefOS_6-packages</a></li>
+<li><a href="http://www.sinenomine.net/products/mainframe-linux/ClefOS_7-packages">http://www.sinenomine.net/products/mainframe-linux/ClefOS_7-packages</a></li>
+</ul>
+<p>Recently, we have built the EPEL repository for ClefOS 7 (and usasble on RHEL). This adds more than 11,000 packages to the ecosystem. We hope to make this available as soon as all our checks are completed.</p>
+<p>Docker is also changing the landscape for Linux on z. Docker enables multi-tenancy of applications that may have differing and sometimes conflicting requirements (for example, different levels of libraries) by managing self-contained entities that are isolated from each other. More importantly, these containers are distribution agnostic: if you have docker daemon running then no matter under which z-based distribution the container was built then you can run your container any other distribution. In fact, the early Hyperledger containers we built and published were based on ClefOS but were built using a Docker environment running under Ubuntu. Talk about freedom!</p>
+<p>The Docker ecosystem on z is continuing to expand. Here are some of the containers freely available at <a href="https://hub.docker.com/r/sinenomine">https://hub.docker.com/r/sinenomine</a>:</p>
+<table>
+<tbody>
+<tr>
+<td width="113"><strong>Name</strong></td>
+<td width="329"><strong>Description</strong></td>
+</tr>
+<tr>
+<td width="113">ade</td>
+<td width="329">Anomaly Detection Engine</td>
+</tr>
+<tr>
+<td width="113">ansible</td>
+<td width="329">An IT automation engine for provisioning, configuration management, deployment and orchestration</td>
+</tr>
+<tr>
+<td width="113">bacula</td>
+<td width="329">Bacula backup and restore containers</td>
+</tr>
+<tr>
+<td width="113">clefos-base</td>
+<td width="329">Base Container from which all others are built</td>
+</tr>
+<tr>
+<td width="113">cobol</td>
+<td width="329">GNU COBOL development</td>
+</tr>
+<tr>
+<td width="113">django</td>
+<td width="329">A high-level Python Web framework</td>
+</tr>
+<tr>
+<td width="113">earthquake</td>
+<td width="329">Terminal-based Twitter Client with Streaming API support</td>
+</tr>
+<tr>
+<td width="113">erlang</td>
+<td width="329">Erlang Development Environment</td>
+</tr>
+<tr>
+<td width="113">fabric-baseimage</td>
+<td width="329">Hyperledger fabric base image</td>
+</tr>
+<tr>
+<td width="113">fabric-ccenv</td>
+<td width="329">Hyperledger fabric C/C++ environment</td>
+</tr>
+<tr>
+<td width="113">fabric-javaenv</td>
+<td width="329">Hyperledger fabric java environment</td>
+</tr>
+<tr>
+<td width="113">fabric-membersrvc</td>
+<td width="329">Hyperledger member services</td>
+</tr>
+<tr>
+<td width="113">fabric-peer</td>
+<td width="329">Hyperledger fabric peer</td>
+</tr>
+<tr>
+<td width="113">fabric-src</td>
+<td width="329">Hyperledger fabric source</td>
+</tr>
+<tr>
+<td width="113">fluentd</td>
+<td width="329">Open-Source Log Collector</td>
+</tr>
+<tr>
+<td width="113">golang</td>
+<td width="329">golang 1.7.3-2 development environment</td>
+</tr>
+<tr>
+<td width="113">hello-nodejs</td>
+<td width="329">Sample program to exercise nodejs</td>
+</tr>
+<tr>
+<td width="113">httpd</td>
+<td width="329">Apache http server</td>
+</tr>
+<tr>
+<td width="113">java</td>
+<td width="329">IBM Java JDK environment</td>
+</tr>
+<tr>
+<td width="113">kubernetes</td>
+<td width="329">A tool for orchestrating and managing Docker containers</td>
+</tr>
+<tr>
+<td width="113">lighttpd</td>
+<td width="329">An open-source web server optimized for speed-critical environments</td>
+</tr>
+<tr>
+<td width="113">mariadb</td>
+<td width="329">MariaDB 5.5 server</td>
+</tr>
+<tr>
+<td width="113">mean</td>
+<td width="329">MEAN stack - a full-stack JavaScript open-source solution</td>
+</tr>
+<tr>
+<td width="113">mediawiki</td>
+<td width="329">MediaWiki is a free and open-source wiki application</td>
+</tr>
+<tr>
+<td width="113">memcached</td>
+<td width="329">A general-purpose distributed memory caching system</td>
+</tr>
+<tr>
+<td width="113">mongodb</td>
+<td width="329">A free and open-source cross-platform document-oriented database program</td>
+</tr>
+<tr>
+<td width="113">mono</td>
+<td width="329">.NET development and runtime environment for Linux on z</td>
+</tr>
+<tr>
+<td width="113">nginx</td>
+<td width="329">A free, open-source, high-performance HTTP server and reverse proxy</td>
+</tr>
+<tr>
+<td width="113">nodejs</td>
+<td width="329">A open-source, cross-platform JavaScript runtime environment for developing a diverse variety of tools and applications</td>
+</tr>
+<tr>
+<td width="113">postgresql</td>
+<td width="329">PostgreSQL server</td>
+</tr>
+<tr>
+<td width="113">puppet</td>
+<td width="329">An open-source configuration management tool</td>
+</tr>
+<tr>
+<td width="113">qpid</td>
+<td width="329">An  open-source messaging system that implements the Advanced Message Queuing Protocol</td>
+</tr>
+<tr>
+<td width="113">r-devel</td>
+<td width="329">The R Project for Statistical Computing</td>
+</tr>
+<tr>
+<td width="113">redis</td>
+<td width="329">Data Structure server - Redis provides access to mutable data structures via a set of commands</td>
+</tr>
+<tr>
+<td width="113">registry</td>
+<td width="329">Docker registry</td>
+</tr>
+<tr>
+<td width="113">saltmaster</td>
+<td width="329">Software to automate the management and configuration of any infrastructure or application at scale</td>
+</tr>
+<tr>
+<td width="113">solr</td>
+<td width="329">The the popular, blazing-fast, open source enterprise search platform</td>
+</tr>
+<tr>
+<td width="113">spark</td>
+<td width="329">An an open source cluster computing framework</td>
+</tr>
+<tr>
+<td width="113">swarm</td>
+<td width="329">Docker cluster manager</td>
+</tr>
+<tr>
+<td width="113">tomcat</td>
+<td width="329">An an open-source Java Servlet Container</td>
+</tr>
+<tr>
+<td width="113">ulboracms</td>
+<td width="329">MEAN stack CMS and blog platform</td>
+</tr>
+<tr>
+<td width="113">wordpress</td>
+<td width="329">A  free and open-source content management system</td>
+</tr>
+</tbody>
+</table>
+<p>There are still some important FOSS packages that have not made their way to the Linux on z mainstream but the gap is narrowing by the day. Between the distributions, vendors, and the Linux on z community the amount of applications available is staggering. If there is a package you require for Linux on z then let your distributor know or ask the question in one of the many Linux communities out there. I recommend signing up to the LINUX-390 listserver as it has a large and active membership.</p>
+<p>Editors Note: Neale Ferguson the author of the blog is on a mission to make open source available on the z Systems and LinuxONE platforms.  His organization Sine Nomine Associates punches above its weight in the Linux on z space and I suggest anyone who is interested in the blog above to follow and engage with Neale on Twitter @NealeFerguson</p>
+<p>&nbsp;</p>

@@ -1,0 +1,139 @@
+---
+layout: post
+title: Linux on z Systems and Containers
+date: 2015-03-20
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  _wpas_skip_tumblr: '1'
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _wpas_skip_facebook: '1'
+  _wpas_skip_google_plus: '1'
+  _wpas_skip_path: '1'
+  publicize_twitter_user: StevenDickens3
+  publicize_twitter_url: http://t.co/dVtWSmJaVq
+  _wpas_done_10231072: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:308419468;b:1;}}
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=5984713084265132032&type=U&a=wCz9
+  _wpas_done_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2015/03/20/linux-on-z-systems-and-containers/"
+---
+<h3 class="post-title entry-title">Dockerfiles</h3>
+<div class="post-header"></div>
+<div id="post-body-5945109361684449222" class="post-body entry-content">Starting a container, doing manual changes to it and committing into a new image is error-prone and does not scale for handling many images. In this post, I will show a powerful and more precise way of shaping new images.</p>
+<p>This method uses a file called <i>Dockerfile </i>to control how new images are built. It is placed in a directory and consists of keyword-parameter lines. Let's take a look:</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# cat apache/Dockerfile<br />
+FROM rhel7-yum<br />
+RUN yum -y install httpd<br />
+COPY index.html /var/www/html/index.html</p></blockquote>
+<p><a name="more"></a>FROM defines an image to base on. In our case, it's the yum-enabled RHEL image.<br />
+RUN statements specify, which commands are to be executed in the course of building the new image. We want to install a web server.<br />
+COPY statements copy files into the new image. In our case, we're providing an <i>index.html</i> file into what is httpd's default <i>DocumentRoot </i>directory:</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# cat apache/index.html<br />
+this is our new homepage</p></blockquote>
+<p>A simple command builds a new image. -t specifies the name of the new image, and the last parameter (apache) specifies the directory that contains Dockerfile:</p>
+<blockquote><p>[root@r1745042 ~]# docker build -t apache apache<br />
+Sending build context to Docker daemon 3.072 kB<br />
+Sending build context to Docker daemon<br />
+Step 0 : FROM rhel7-yum<br />
+---&gt; 63d2b40384d1<br />
+Step 1 : RUN yum -y install httpd<br />
+---&gt; Running in 9cd13a5307e7<br />
+Loaded plugins: product-id, subscription-manager<br />
+[... I left out a lot of yum output ...]<br />
+Installed:<br />
+httpd.s390x 0:2.4.6-17.el7</p>
+<p>Dependency Installed:<br />
+apr.s390x 0:1.4.8-3.el7                  apr-util.s390x 0:1.5.2-6.el7<br />
+httpd-tools.s390x 0:2.4.6-17.el7         mailcap.noarch 0:2.1.41-2.el7</p>
+<p>Complete!<br />
+---&gt; 43567f371ee3<br />
+Removing intermediate container 9cd13a5307e7<br />
+Step 2 : COPY index.html /var/www/html/index.html<br />
+---&gt; 9d385cb26584<br />
+Removing intermediate container 2b635f816d59<br />
+Successfully built 9d385cb26584</p></blockquote>
+<p>You can see that every step of the <i>Dockerfile </i>processing creates a new container. At the end, <i>apache</i> has been created:</p>
+<blockquote><p>[root@r1745042 ~]# docker images<br />
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br />
+apache              latest              9d385cb26584        54 seconds ago      594 MB<br />
+rhel7-yum           latest              63d2b40384d1        3 minutes ago       539.3 MB<br />
+rhel7               latest              7228aca22f66        11 minutes ago      539.3 MB<br />
+sles12              latest              91e78dd3f4f5        16 minutes ago      1.537 GB</p></blockquote>
+<p>Let's start the web server, and use a simple way to not run it as a daemon, but in the foreground. Also, we'll give it a name "<i>webserver</i>", so that we can reference it when fetching files from the <i>webserver</i>:</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# docker run -i -t --rm --name webserver apache httpd -D FOREGROUND<br />
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.6. Set the 'ServerName' directive globally to suppress this message</p></blockquote>
+<p>Appearently there is some warning about a configuration issue. Let's fix that by specifying <i>ServerName </i>in the<i> httpd.conf</i> file. To do that, <i>Dockerfile </i>looks like this:</p>
+<blockquote><p>[root@r1745042 ~]# cat apache/Dockerfile<br />
+FROM rhel7-yum<br />
+RUN yum -y install httpd<br />
+COPY index.html /var/www/html/index.html<br />
+RUN echo ServerName localhost &gt;&gt; /etc/httpd/conf/httpd.conf</p></blockquote>
+<p>When we build <i>apache </i>again, it will collide with the existing image. Let's use a different tag for our image we have built initially:</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# docker tag 9d385cb26584 apache:initial<br />
+[root@r1745042 ~]# docker images<br />
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br />
+apache              latest              9d385cb26584        6 minutes ago       594 MB<br />
+apache              initial             9d385cb26584        6 minutes ago       594 MB<br />
+rhel7-yum           latest              63d2b40384d1        9 minutes ago       539.3 MB<br />
+rhel7               latest              7228aca22f66        17 minutes ago      539.3 MB<br />
+sles12              latest              91e78dd3f4f5        22 minutes ago      1.537 GB</p></blockquote>
+<p>docker tag will simply add another human-readable link to an image. Therefore we can delete the default <i>apache </i>one (with the <i>latest </i>tag):</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# docker rmi apache<br />
+Untagged: apache:latest<br />
+[root@r1745042 ~]# docker images<br />
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br />
+apache              initial             9d385cb26584        7 minutes ago       594 MB<br />
+rhel7-yum           latest              63d2b40384d1        9 minutes ago       539.3 MB<br />
+rhel7               latest              7228aca22f66        18 minutes ago      539.3 MB<br />
+sles12              latest              91e78dd3f4f5        23 minutes ago      1.537 GB</p></blockquote>
+<p>So we can build our new <i>apache </i>image -- note the tag now contains another identifier. Very often, the TAG field is used for versioning.</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# docker build -t apache:improved apache<br />
+Sending build context to Docker daemon 3.072 kB<br />
+Sending build context to Docker daemon<br />
+Step 0 : FROM rhel7-yum<br />
+---&gt; 63d2b40384d1<br />
+Step 1 : RUN yum -y install httpd<br />
+---&gt; Using cache<br />
+---&gt; 43567f371ee3<br />
+Step 2 : COPY index.html /var/www/html/index.html<br />
+---&gt; Using cache<br />
+---&gt; 9d385cb26584<br />
+Step 3 : RUN echo ServerName localhost &gt;&gt; /etc/httpd/conf/httpd.conf<br />
+---&gt; Running in 13ee4e90197a<br />
+---&gt; 00e8f7420243<br />
+Removing intermediate container 13ee4e90197a<br />
+Successfully built 00e8f7420243</p></blockquote>
+<p>Note all intermediate steps are still cached, so this will run through very quickly. We have now our two flavors of <i>apache</i>:</p>
+<blockquote><p>[root@r1745042 ~]# docker images<br />
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE<br />
+apache              improved            00e8f7420243        26 seconds ago      594 MB<br />
+apache              initial             9d385cb26584        8 minutes ago       594 MB<br />
+rhel7-yum           latest              63d2b40384d1        10 minutes ago      539.3 MB<br />
+rhel7               latest              7228aca22f66        19 minutes ago      539.3 MB<br />
+sles12              latest              91e78dd3f4f5        23 minutes ago      1.537 GB</p></blockquote>
+<p>Starting the web server, again giving it the name <i>webserver</i>:</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# docker run -i -t --rm --name webserver apache:improved httpd -D FOREGROUND</p></blockquote>
+<p>Now let's fetch a page from the web server -- of course from a container. We run curl to download the home page (<i>index.html</i> we provided). The <i>--link</i> statement associates <i>serveraddr </i>to the identifier <i>webserver</i>. <i>serveraddr </i>can then be used in the curl command:</p>
+<blockquote class="tr_bq"><p>[root@r1745042 ~]# docker run -i -t --rm --link webserver:serveraddr rhel7 curl serveraddr<br />
+this is our new homepage</p></blockquote>
+<p>In summary of the two recent posts, Docker provides a powerful and simple to use tool to create, modify, run and manage containers and images. Efficiency is achieved through automatic deduplication of files. This also allows the host kernel to use this level of efficiency on shared libraries. Dockerfiles are a convenient, reproducible, and well-defined way to create new images.</p>
+<p>With this small introduction, enjoy the world of containers.</p></div>
+<div class="post-body entry-content">
+<div></div>
+<div>Originally posted on this blog: http://containerz.blogspot.com/2015/03/dockerfiles.html#more</div>
+</div>
+<div class="post-footer"></div>

@@ -1,0 +1,134 @@
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">In Part 1 of this blog, I covered the fundamentals of Tokenization, and some of the barriers to adoption. In this blog, I will take a deep dive into one approach for handling the security of tokenized assets. Let's go through some of the approaches to address the security of digital assets and tokens:</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><strong>Hardware Security Module</strong></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span class="veryhardreadability">Hardware Security Modules (HSM's) are dedicated components designed to hold, protect, and secure master crypto keys</span>. Without HSM's, encryption keys would <span class="passivevoice">be held</span> in main system memory. When held in memory keys are vulnerable if an attacker breaches application security.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">IBM HSM's support a concept known as "cryptographic domains". <span class="hardreadability">Secure keys generated and wrapped with the master key in one domain are not usable by another domain using a different master key</span>. <span class="veryhardreadability">Humans </span><span class="passivevoice">are prevented</span><span class="veryhardreadability"> from keying in these </span><span class="adverb">extremely</span><span class="veryhardreadability"> sensitive keys through domain separations in hardware</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
+<p>HSMs are well proven in the financial services industry, but they are still not common enough. Moreover, HSM's vary a great deal in quality and capabilities. <span class="hardreadability"> IBM Crypto Express HSMs are special because they </span><span class="passivevoice">are certified</span><span class="hardreadability"> to FIPS 140-2 Level 4 standards</span>. There is no other <span class="adverb">commercially</span> available Level 4 HSM. There are significant differences between Level 3 and Level 4 certified HSM's.</p>
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">While Level 3 HSM’s respond to tampering with their doors or covers, they can still be attacked through other paths.  It's like securing your doors and windows, only to have an intruder drill through the floor below.  <span class="hardreadability">In banking, should a Level 3 HSM </span><span class="passivevoice">be breached</span><span class="hardreadability">, new keys would </span><span class="passivevoice">be generated</span><span class="hardreadability"> and transactions reversed</span>. <span class="complexword">However</span><span class="veryhardreadability">, reversing transactions is not possible with digital assets, once the private keys </span><span class="passivevoice">are revealed</span><span class="veryhardreadability"> the wallet can </span><span class="passivevoice">be emptied</span>.</div>
+</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">
+<div dir="ltr">When an IBM Level 4 HSM is attacked by probing<span class="hardreadability">, chemical, voltage, electromagnetic, or temperature, it self-destructs</span>. <span class="veryhardreadability">For example, in a cryogenic attack where the HSM </span><span class="passivevoice">is frozen</span><span class="veryhardreadability"> to slow down the electrons, the Level 4 HSM will destroy the keys as soon as the threshold </span><span class="passivevoice">is exceeded</span>. The same applies in instances where an x-ray proton beam is used to flip bits.  Furthermore, it is IBM's policy to destroy any tampered HSMs, rather than try to repair them and re-encapsulate them in a protective enclosure.  This policy assures that the devices are protected from the time they leave the manufacturing facility to the time they are destroyed.</div>
+</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">It is common for some vendors to replace the native HSM operating system with their own. <span class="hardreadability">Many HSM vendors add wallet and multi-signature signing capabilities beyond managing a master key</span>. These firms are becoming OEMs by replacing the operating system. These firms will also not certify these aspects of their HSM under FIPS 140-2 criteria. Often these firms certify only the enclosure. <span class="hardreadability">IBM believes that HSM's should protect the master key, and anything else represents a larger attack surface</span>. IBM’s Crypto Express 6S memory <span class="passivevoice">is designed</span> to last 30 years without failure. It is not uncommon for other HSM vendors to manage cost by installing memory with an MTBF of months not years. <span class="hardreadability">When it comes to performance, HSMs are not built like CPUs and do not have extra I/O that would help keep the operating temperature down</span>. <span class="hardreadability">The service life of these jailbroken HSM's may also </span><span class="passivevoice">be reduced</span><span class="hardreadability"> when under heavy loads for transaction signing</span>. <span class="hardreadability">The greatest restriction is when an ECC needs to </span><span class="passivevoice">be updated</span><span class="hardreadability"> due to a vulnerability or a new ECC should </span><span class="passivevoice">be deployed</span><span class="hardreadability"> or deprecated</span>. <span class="hardreadability">Responding to these events may </span><span class="passivevoice">be delayed by</span><span class="hardreadability"> the HSM release and standard maintenance cycles</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span class="veryhardreadability">These issues could go away if the HSM protections </span><span class="passivevoice">were extended</span><span class="veryhardreadability"> into protected, encrypted memory and these actions could </span><span class="passivevoice">be done</span> <span class="adverb">simply</span><span class="veryhardreadability"> by taking a Docker container offline and making the software update</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span class="hardreadability">Running in protected memory would also for all the smart contracts to execute as if they were </span><span class="adverb">logically</span><span class="hardreadability"> inside a FIPS Level 140-2 Level 4 HSM</span>. <span class="veryhardreadability">These smart contracts could perform all sorts of capabilities from wallet upgrades, blockchain forks, coin swapping (like ERC-20 to EOS), Proof of Stake staking, as well as running key stores</span>. <span class="veryhardreadability">Key stores deployed as Docker applications can </span><span class="passivevoice">be taken</span><span class="veryhardreadability"> offline into an encrypted persisted state in the form of cold storage or brought into memory but not accessible as a warm wallet, or </span><span class="adverb">entirely</span><span class="veryhardreadability"> online as a hot wallet</span>. <span class="hardreadability">Each of these Docker applications is running in an encrypted Hyper Protect Virtual Machine (HPVM) as an appliance</span>. When persisted they <span class="passivevoice">are wrapped</span> again by another layer of encryption. <span class="hardreadability">HPVMs run inside the Secure Service Container (SSC) which is a 16TB logical partition that provides a third layer of encryption</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><strong>Secure Service Container: 16 TB of encrypted, protected memory.</strong></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">The IBM Secure Service Container (SSC) is like Fort Knox for Crypto. <span class="veryhardreadability">Isolation, encryption, protection, privacy, confidentiality: these are the fundamental security requirements for crypto exchanges</span>. <span class="veryhardreadability">Many crypto exchange attacks are due to compromised root user credentials made possible by phishing, wallet address redirects, container exploits, and architectural flaws in software design</span>. Once you become a root user in Linux you can do anything, you could look at any data.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">The entire cryptosystem <span class="passivevoice">is deployed</span> into the IBM LinuxONE trusted execution environment. <span class="veryhardreadability"> The SSC not only encrypts all data in flight and at rest, but it also encrypts the keys used to encrypt the data, and stores the keys in a tamper responding Hardware Security Module (HSM)</span>. <span class="veryhardreadability">To protect against insider threats, there is no command line access, no operating system Root access, no ability to run scripts or introduce new contents into the container</span>. <span class="hardreadability">Even a memory dump will only provide encrypted data, so no insider attacks are possible with Secure Service Container</span>. <span class="veryhardreadability">The appliance </span><span class="adverb">automatically</span><span class="veryhardreadability"> logs encryption activity and decryption attempts, so it is audit-ready and tamper responding</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><strong>True Random Number Generator</strong></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">Cryptographic algorithms rely on random seeds. <span class="veryhardreadability">Pseudorandom number generators </span><span class="passivevoice">are flawed</span><span class="veryhardreadability">, allowing attackers to identify and exploit patterns (in what should be random numbers) </span><span class="complexword">in order to</span><span class="veryhardreadability"> break encryption</span>. True Random Number Generators (TRNGs) stop this class of attacks. IBM LinuxONE systems incorporate built-in TRNGs into the processor cores. The TRNGs <span class="passivevoice">are designed</span> to support the most demanding cryptographic security requirements.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><strong>Firmware Tamper Protection</strong></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span class="veryhardreadability"> IBM LinuxONE systems comply with National Standards and Technology (NIST) Special Publication 800-147B and raise an alarm if anyone attempts to tamper with firmware booting</span>. <span class="veryhardreadability"> Dedicated Hardware Management Consoles support multi-factor authentication (per IETF RFC 6238) and separate role-based security profiles</span>. These dedicated HMC's prevent operators from exceeding defined responsibilities.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><strong>Logical Partitions</strong></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">IBM LinuxONE <span class="passivevoice">is designed</span> for Common Criteria Evaluation Assurance Level 5+ (EAL5+) certification. This <span class="passivevoice">is achieved</span> through the use of logical partitions (LPARs). <span class="veryhardreadability">An application in one operating system image in an LPAR, cannot access an application running on a different operating system image on another LPAR</span>. <span class="veryhardreadability">LPAR's enable separation of application elements, database components, into </span><span class="adverb">strictly</span><span class="veryhardreadability"> defined, isolated security zones</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><strong>Time Source Security</strong></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">Accurate timekeeping is a critical element in maintaining security. Timekeeping is vital for checking and rejecting expired credentials and certificates. Some exchange attacks have taken advantage of poor clock synchronization. <span class="veryhardreadability">IBM LinuxONE systems incorporate high-quality system clocks in redundant form, with continuous, automatic error checking</span>. <span class="hardreadability"> This allows for the isolation and removal of any failed clock component before it produces an inaccurate time</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"><span class="veryhardreadability">Even the highest quality clocks </span><span class="complexword">require</span><span class="veryhardreadability"> synchronization with the world's most trusted time bureaus</span>. <span class="veryhardreadability">LinuxONE systems </span><span class="passivevoice">are equipped</span><span class="veryhardreadability"> with Server Time Protocol (STP), a system feature that makes regular inquiries with trusted time bureaus</span>. <span class="veryhardreadability">STP can also check the validity of time information using symmetric key and Autokey authentication per IETF RFCs 1305 and 5906, to assure that time messages are not falsified or altered</span>. <span class="hardreadability">STP also helps the system handle the periodic leap seconds that global time standards mandate</span>.</div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr"></div>
+</div>
+<div class="">
+<div class="public-DraftStyleDefault-block public-DraftStyleDefault-ltr">How you secure your Tokenized assets is vital if you want to get into the Asset custody or Tokenization space. IBM is your partner as you embark on this journey. For more information on how LinuxONE can help click <a href="https://www.ibm.com/it-infrastructure/linuxone">here</a>.</div>
+</div>

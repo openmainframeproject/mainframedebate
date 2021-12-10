@@ -1,0 +1,23 @@
+<p>&nbsp;</p>
+<p>The business askes for more, more, more, faster faster, faster, all the time keeping budgets constrained. Database performance is just part of this equation. A crucial element of how you speed up a database is improving logging speed.  Logging Speed is a bottleneck for IMS performance, and IBM has been hard at work trying to remove this bottleneck.</p>
+<p>The enhancements in IMS Release 15 to exploit z High Performance FICON (zHPF™) and zHyperWrite™ reduce latency and, increase logging speed.</p>
+<p><strong>Background</strong></p>
+<p>IMS™ writes log records to a DASD data set called the <a href="https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.doc/dfht4/topics/dfht42h.html">online log data set (OLDS)</a>.</p>
+<p>The OLDS is made up of multiple data sets written in wraparound form. Using more than one OLDS enables IMS to continue logging when the first OLDS is full. Also, if an I/O error occurs while writing to an OLDS, IMS can continue logging by isolating the OLDS where the problem occurred and switching to another one.</p>
+<p>IMS can write committed log records to the <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.sdg/ims_ig88.htm">write-ahead data set (WADS)</a> so that these records are externalized to avoid the need to write partially filled and padded log blocks to the OLDS.</p>
+<p>When the OLDS is full, it is archived to the system log data set (SLDS). How frequently the OLDS is archived is controlled by the administrator. The system reuses the OLDS after it has been archived. An SLDS can be on DASD or on tape. The contents are used as input to the database recovery process.</p>
+<p>To enhance performance and to optimize space on OLDS, incomplete or partially filled buffers are written to a WADS when necessary for recoverability. The WADS are high speed DASD data sets with a high write rate. Only complete log buffers are written to OLDS. When the log data is on an OLDS, the equivalent WADS records are ignored.</p>
+<p>The log write-ahead function ensures that all log records are on the log before IMS writes changes to a database in any of these situations:</p>
+<ul>
+<li>When IMS needs to reuse the databases buffer (if this is before commit)</li>
+<li>During commit</li>
+<li>During VSAM background write</li>
+</ul>
+<p><strong>IMS Release 15 Enhancements for WADS Performance</strong></p>
+<p>The <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPH2_15.1.0/com.ibm.ims15.doc.rpg/ims_15_logger_zhyperwrite_support.htm">IMS Release 15 WADS I/O enhancements</a> allow clients to exploit the zHPF and zHyperWrite capability provided by IBM DS8000™ Storage Systems.  The <a href="http://www.ibmsystemsmagmainframedigital.com/nxtbooks/ibmsystemsmag/mainframe_20150910/index.php#/44">zHPF feature</a> provides improved channel and control unit efficiency, lower latency and improved reliability/availability as compared to FICON.  The <a href="http://ibmsystemsmag.com/mainframe/administrator/db2/zhyperwrite-zip/">zHyperWrite feature</a> is able to mitigate the synchronous replication delays that occur when using Metro Mirror™ technology for continuous availability and disaster recovery.</p>
+<p>The experiment below shows a typical IMS work load run during the IBM testing of IMS Release 15.  The IMS WADS I/O service time is shown with zHPF and zHyperWrite turned off and then again with zHPF and zHyperWrite turned on.  Up to a 50% reduction in WADS I/O service time was observed.</p>
+<p><strong>Conclusion </strong></p>
+<p>To improve IMS speed and keep your business happy, stay current on you IMS releases and move to IMS Release 15, look to exlore zHyperWrite and zHPF and see how you can reduce the I/O services time for WADS writes by as much as 50%.</p>
+<p>Learn more about <a href="http://ibmsystemsmag.com/mainframe/administrator/db2/zhyperwrite-zip/">IBM zHyperWrite and zHPF</a> today.</p>
+<p><strong>Editors Note:</strong></p>
+<p>Harry Yudenfriend is the original author of this post. Follow Harry who is an IBM Fellow <a href="https://twitter.com/HMYudenfriend">here</a> on twitter</p>

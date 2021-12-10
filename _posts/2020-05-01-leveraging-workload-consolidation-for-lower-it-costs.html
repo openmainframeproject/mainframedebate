@@ -1,0 +1,54 @@
+---
+layout: post
+title: Leveraging Workload Consolidation for Lower IT Costs
+date: 2020-05-01
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _thumbnail_id: '1007'
+  _mentions_term_meta: stevendickens3
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:61:"https://twitter.com/StevenDickens3/status/1256237068486934535";}}
+  timeline_notification: '1588345228'
+  geo_public: '0'
+  _publicize_job_id: '43712824804'
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2020/05/01/leveraging-workload-consolidation-for-lower-it-costs/"
+---
+<p>Whether large or small, companies are seeking solutions to simplify IT operations and reduce cost, especially in a world where COVID 19 is a clear and present danger to business survival.</p>
+<p>For many, consolidating workloads onto denser, centralized computing platforms is an effective way to decrease IT expenses. A major savings driver is the decrease in software costs. Typically, Linux workloads running on centralized servers such as LinuxONE and Integrated Facility for Linux (IFLs) on IBM Z require fewer per core licenses due to per-core pricing. Another savings driver is energy efficiency. Workloads on IFLs on IBM Z and LinuxONE consume less energy compared to distributed server environments, reducing data center carbon footprint and improving Power Usage Effectiveness (PUE).</p>
+<p>Consolidating x86 workloads onto fewer physical servers also lowers floor space costs. As distributed server environments grow to meet new business demands, floor space can become a significant expense, particularly when an IT organization has reached the physical limits of its data center and is considering a move to a larger facility. Not only can workload consolidation lower software and data center costs, but it can also lower administrative overhead. Fewer physical servers can mean less hardware maintenance, less network management, and simpler software patching.</p>
+<p>For most organizations, workload growth is inevitable. Centralized servers simplify the task of workload provisioning and de-provisioning by leveraging available capacity within the same physical server. Most IBM Z and LinuxONE systems provide dormant capacity that can be activated on demand for rapid provisioning of new LPARs versus setting up a distributed server that requires procurement, installation, configuration, security administration, and workload deployment. Reliable disaster recovery for a distributed server environment can also become difficult as more servers with potentially different components, hundreds or thousands of parts, and new configurations are added over time. In contrast, a condensed server environment comprised of one or a few servers can facilitate replication for disaster recovery.</p>
+<p><strong>Which workloads consolidate well </strong></p>
+<p>Organizations opting for workload consolidation to relieve cost and IT complexity tend to look for the following types of workloads.</p>
+<p><strong>1. Workloads with per-core pricing</strong> - Linux workloads that have a software license price per unit of compute power (processor or socket) are strong candidates for consolidation on LinuxONE or IFLs on IBM Z from a financial perspective. This is due to differences in centralized versus distributed server architecture such as processor speeds, caching, HiperSockets for in-memory communication across LPARs, high levels of sustained CPU utilization and workload management capabilities. In general, distributed servers require considerably more processor cores to run the same Linux workloads than LinuxONE or IFLs on IBM Z. IBM's internal tests and data from client environments show core consolidation ratios ranging from 10 to 32.5 distributed cores to one IFL, yielding dramatically lower software costs.</p>
+<p><strong>2. Workloads with variable resource requirements</strong> - Linux workloads with activity fluctuations are very well suited for LinuxONE and IFLs. Centralized servers provide compute elasticity or resource sharing, so that memory, CPU and I/O can be allocated to workloads with diverse timeline requirements over a 24-hour period.</p>
+<p><strong>3. Workloads with I/O demands</strong> - Most business workloads consistently use I/O to perform their tasks (for example databases, messaging, and stream processing workloads). These workloads tend to be I/O driven and can accelerate response times by leveraging LinuxONE and IFL FICON® or FCP protocols designed to enhance data transfer and to increase sustained CPU utilization through advanced workload management capabilities. FICON I/O capabilities such as multipathing6that automatically switches to an alternate path in event of an interruption, which can alleviate administrative overhead for maintenance and network bottlenecks.</p>
+<p><strong>4. Workloads with high availability requirements</strong> - Business-critical workloads that require 24x7 availability are often placed in IFLs on IBM Z or LinuxONE to leverage built-in redundancy and resiliency. Capacity Backup (CBU) for IFLs and LinuxONE allows hardware engines to be used for disaster recovery without incurring additional software charges if the production server is temporarily unavailable.8 In the absence of a DR event, organizations are not charged for unused licenses in a non-production environment, thus alleviating software costs. Additionally, IFLs and LinuxONE hardware used for disaster recovery environments cost less than hardware for production environments, resulting in increased disaster recovery savings.</p>
+<p><strong>5. Workloads with low latency and high transaction requirements</strong> - Many IT organizations keep their critical system of record data on IBM Z and leverage other platforms for their applications. If the data on z/OS is used from applications on distributed servers, latency increases as the data are accessed by an off-platform environment. Overall application performance is reduced since the data must constantly access the system of record over TCP/IP. These applications are best collocated with the data on the same physical server as the system of record. The applications can run on IFLs on the same server and leverage HiperSockets or Shared Memory Communication through TCP/IP, enabling greater bandwidth and lower latency compared to accessing the data over TCP/IP from distributed servers.</p>
+<p><strong>6.Workloads with high-security requirements</strong> - Workloads that access sensitive data are typically placed on IBM Z or LinuxONE to minimize the possibility of a security event. Both IFLs on IBM Z and LinuxONE provide unique security benefits to lower the risk of a data or privacy breach with:</p>
+<ul>
+<li>Hardware Security Module Crypto Express card certification at highest level 4 of FIPS 140-2</li>
+<li>Pervasive encryption features with HSM-based key management 11and Secure Service Containers to reduce security risks</li>
+<li>Cryptographic coprocessors to deliver high throughput for cryptographic functions in crypto workloads</li>
+<li>z/VM security features for virtualized workloads such as LDAP, RACF® and cryptography for Linux guests on z/VM</li>
+<li>IBM Data Privacy Passports to encrypt eligible data, grant, control, and revoke access to it, even as it moves off the system of record within your enterprise</li>
+</ul>
+<p><strong>7. Workloads headed toward the cloud</strong> - Both new cloud-native and existing workloads targeted for modernization for the cloud are good fits for IFLs on IBM Z or LinuxONE using IBM Cloud Paks. IBM Cloud Paks allow new and existing workloads to be containerized and prepackaged using IBM Cloud Pak unique capabilities on the Red HatOpenShift Container Platform. Each IBM Cloud Paks includes containerized IBM middleware and common software services for development and management, on top of a common integration layer designed to reduce development time and operational expenses. With Red Hat OpenShift Container/Kubernetes technology, containerized workloads can be densely packed to lower infrastructure costs and be easily managed, reducing operations expenses. DevOps automation across the application delivery lifecycle brings higher productivity and efficiencies resulting in higher business values.</p>
+<p><strong>Summary</strong></p>
+<p>Unusual times often dictate unusual approaches.  Question the norm, push back on the "that is how we have always done it" mindset amongst your team.  If you need to make real tangible savings to your IT estate then IBM is primed and ready to help.</p>
+<p>Want to find out how IBM can help?  Get in touch.  @stevendickens3 on twitter or email me at Steven.Dickens@us.ibm.com</p>

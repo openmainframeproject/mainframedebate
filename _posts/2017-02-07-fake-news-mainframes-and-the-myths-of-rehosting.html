@@ -1,0 +1,51 @@
+---
+layout: post
+title: Fake News, Mainframes and the myths of rehosting - Part 1
+date: 2017-02-07
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- z13
+tags: []
+meta:
+  _edit_last: '77095863'
+  geo_public: '0'
+  _publicize_job_id: '1603169189'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:60:"https://twitter.com/StevenDickens3/status/829022397009448965";}}
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _wpas_skip_10231072: '1'
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2017/02/07/fake-news-mainframes-and-the-myths-of-rehosting/"
+---
+<p style="text-align:center;"><em><a href="https://mainframedebate.files.wordpress.com/2017/02/screen-shot-2017-02-03-at-10-40-07.png"><img class="alignnone size-medium wp-image-619" src="{{ site.baseurl }}/assets/2017/02/screen-shot-2017-02-03-at-10-40-07.png?w=300" alt="screen-shot-2017-02-03-at-10-40-07" width="300" height="289" /></a></em></p>
+<p>Clients are saying they want to move their mainframe workloads to a public cloud platform (Editor: Lets not pull any punches with that first sentence).  Clients cite "the mainframe is too expensive", or "the mainframe is not modern", or "we are running out of mainframe skills".  Or they may simply have a new executive who is not familiar with the value of IBM z, or is otherwise just pre-disposed to move everything to the cloud. This 2 part blog is intended to help address this topic and debunk some 'fake news' put out by organizations who will have you believe certain things along the way.</p>
+<p>Clients see a shared, multi-tenant public cloud services offering such as Amazon Web Services or Microsoft Azure as the promised land, some nirvana where angels tread, and they have decided to adopt a cloud-first strategy for their entire data center.  Then when faced with the challenge of how to integrate new tools, services and capabilities with their System of Record running on IBM z, they mistakenly believe that their only recourse is to offload the workloads from the mainframe and remove it entirely.</p>
+<p>But the never spoken of bottom line is this:  Typically, moving workload off the mainframe –via <a href="http://www.redbooks.ibm.com/abstracts/redp5032.html">rehosting</a>, migration, or re-engineering – <em>is</em> a large and complex project, which more often than not does not succeed, almost always ends up costing far more than anticipated, and ultimately does not save money, let alone the senior IT Exec career impact.</p>
+<p>Let's examine what offloading workloads from the mainframe really means.</p>
+<p>There are three methods for moving workload off the mainframe:</p>
+<ul>
+<li><strong>Rehosting  </strong>=&gt;  Take the applications off the mainframe and run them on another platform.</li>
+<li><strong>Migrating Components</strong>  =&gt;  Take some of the applications off.</li>
+<li><strong>Re-engineering</strong>  =&gt;  Basically rewrite the applications for a new platform.</li>
+</ul>
+<p>Typically, <strong>Rehosting</strong> maps to a customer complaint of escalating cost.  However moving workloads to another platform (typically x86) has serious drawbacks.  MicroFocus COBOL - - the most common alternative COBOL --  is an emulator, not a compiler.  It's slower than IBM Enterprise COBOL, and incomplete in terms of functionality. So why not stay on the best COBOL platform?  Native z/OS COBOL is constantly being improved, it's highly mature, and highly integrated into the transaction/DB environment.  IBM knows of numerous cases where companies have spent years of labour and cost, yet their rehosting efforts have failed completely.</p>
+<p><strong>Migrating Components</strong> typically maps to a complaint of lack of agility.  However IBM z is easily cloud-enabled -- it's open, standards-based, API-enabled --  therefore mainframe-based workloads can easily connect through modern interfaces to cloud-based components.  It's critical to talk about all the new work IBM is doing around Application Discovery and z/OS Connect to open and expose mainframe assets for connectivity.  It's critical to dispel the myth of lack of agility.</p>
+<p>Lastly, <strong>Re-engineering</strong> typically maps to a complaint around skills shortage.  IBM has seen many examples where re-engineering efforts become huge and unwieldly, and rarely succeed.  To dispel the myth about mainframe skills shortage, take a look at Linux and Java and REST/JSON, and all the other modern languages, interfaces, open source software, and tools that run on the mainframe.  Increasingly clients are realizing why minimizing transformation of the core Systems of Record is so critical.</p>
+<p>Ultimately, clients have invested very significant amounts of time and energy in the intellectual capital which is their mainframe-based workloads and applications. Mainframes work exceptionally well at running the core computing of most businesses, and IBM continues to drive real innovation onto this platform.  In fact, the IBM z platform has consistently shown the ability to adapt and innovate in the face of changing market forces -- be it PCs, Java, Linux, and now <a href="http://www-03.ibm.com/systems/z/solutions/hybrid-cloud/">cloud</a>.  So if your strategy includes a shift towards public cloud integration, rest assured that IBM can help you.</p>
+<p>The on-premises solution enables clients to maintain control and governance over sensitive and confidential data and invaluable and irreplaceable business assets.  Keeping data and applications on the z-based System of Record and minimizing transformations has been shown time and again to reduce cost, improve throughput and reduce latency.  With IBM z at the heart of the data centre, clients have a modern, immensely powerful and scalable platform capable of being the cornerstone for analytics, AI, machine learning and cognitive computing of the future.</p>
+<p>If however  you have already made up your mind, and you are bound and determined to move off the mainframe and onto the cloud... <em>you still have options!  </em>In this case, take a look at IBM <a href="https://www.ibm.com/us-en/marketplace/managed-cloud-environment-for-z-systems">zCloud</a> (formally known as Cloud Managed Services on z Systems)!</p>
+<p>IBM zCloud is a pay-per-use, public cloud for z/OS and Linux on z workloads; and it offers the typical cloud advantages of you no longer having to host infrastructure and paying those associated costs.  Moving workloads to IBM zCloud also insures that you do NOT dive into the lengthy, expensive and often unsuccessful endeavour of an offload.  Workloads are <em>not</em> rehosted -- they continue to run on z/OS, IBM COBOL and other IBM middleware and also leverage the rich ecosystem of ISV tools.  There is no component migration and no re-engineering either -- workloads run as is and continue to reap all the benefits of the z/OS platform.  Yet the platform is now a <em>cloud platform</em>... with all the integration benefits thereof.  The client goes forward with a successful cloud story and typically at significant saving over on premise operations.</p>
+<p>Stay tuned for Part 2 where we will provide more real facts as opposed to the fake news you hear from this who propose getting off the mainframe....</p>
+<p>For information about IBM zCloud, visit the <a href="https://www.ibm.com/us-en/marketplace/managed-cloud-environment-for-z-systems">website</a></p>
+<p>Editors Note - While I would love to take credit for this well written and articulate blog post it was largely authored by Emily Farmer from IBM's Competitive Project Office (CPO) who is an expert at working with clients on the true costs of replatforming, rehosting or workload placement decisions.  The CPO have done over 600 studies evaluating where to place workloads and in the vast majority of those cases the mainframe wins hands down, despite what the 'fake news' will tell you...</p>

@@ -1,0 +1,52 @@
+---
+layout: post
+title: Docker Use Cases on z Systems
+date: 2015-03-27
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=61815&stype=M&topic=5987225651680210944&type=U&a=cTWX
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  publicize_twitter_user: StevenDickens3
+  publicize_twitter_url: http://t.co/7B9sDQDIq5
+  _wpas_done_10231072: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:308419468;b:1;}}
+  _wpas_done_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2015/03/27/docker-use-cases-on-z-systems/"
+---
+<p>Docker really provides you ease of use, portability and quick to get up and running where you can develop anywhere. Docker is an open source tool that provides a way of running isolated applications/software in a single Linux instance in what is called "Containers". It basically has an engine/runtime on top of the OS and provides the virtual containers to deploy software in to. The beauty of this is it provides better portability for the application/software, it's lightweight and removes some of the complexities of managing a hypervisor (e.g. z/VM, VMware).</p>
+<p>To net this out:</p>
+<ul>
+<li>way of packaging apps together to more efficiently deploy them to get better density</li>
+<li>develop the app package on any platform, and provided that the binaries exist for the platform, deploy them where ever you want to, e.g. your laptop, your data center, a public cloud</li>
+<li>the trend towards modernizing the Linux environments in datacenters</li>
+<li>no VM resource overhead since the hipervisor is not required</li>
+<li>full support of DevOps model through simple build process of containers, versioning, deployment, etc</li>
+<li>simple scaling of stateless solution components (e.g. node.js instances).</li>
+</ul>
+<p>However - if you want security, you need to package them as second level guests to get the isolation between the apps/data.  This is how I presume most z clients will use Docker, so the hipervisor advantage is probably not pertinent</p>
+<p>Here are 4 use case scenarios that define the advantage of using Docker containers:</p>
+<p><b>Use case 1</b> : A developer can develop apps in Java on an Intel platform, then desire to deploy on LoZ   Since Java doesn’t require a recompile on different platforms, app portability is a given.   Without containers, the developer didn’t know if they had the right libraries, Java VM level, MW requirements.  But now with containers, any SW the app requirements can be packaged into a container as long as its Java.  The container does have to be rebuilt on the platform image you are using, but once you are in a container model, this becomes simpler.</p>
+<p><b>Use case 2</b>: Docker allows for larger density than VMs and enables more apps in one system.  Before containers, a user could only run 10 WebSphere instances on Intel sys, but now with containers and its memory efficiency, the user can run hundreds of the same instance,  as you don’t have to set up separate VMs with hypervisors.  As a platform, z has some advantages over x86 with memory overcommit, and the overhead on z with CPU virtualization is relatively small.  Thus, one will see a bigger advantage in the distrusted environment leveraging containers, but what is interesting is the combination of containers and security isolation advantages z due to this memory overcomit - lower VM overhead.</p>
+<p>In a Docker environment that leverages density, the user loses the security isolation between these apps since the hipervisor is not present.  Thus, if this is a don't care, running on bare metal give good density at fast response time.  If you do care like a bank, than you will want the isolation, and as stated above, the overhead on z is minimal.</p>
+<p>For mission critical Enterprise, the given advice is leverage density/bare metal like in a dev-test environment to rapidly put everything on one LPAR on z to eliminate the provisioning associated with hipervisors, then in production, go back to second level guests to get the isolation, and live with the hipervisor overhead as the production environment is not changing rapidly.  Use this VM isolation on a tenant granularity to get the isolation on a tenant base, and sufficent "mass" of applications to gain from the efficiency opportunities since the VMs don't have as big of overhead on z as compared to an x86 platform.</p>
+<p>So, on z Systems, you can shape your environment with system virtualization and container elements according to your landscape and your requirements, hardly with constraints in performance -- you can define IT structures according to your needs, not your system constraints.</p>
+<p><b>Use case 3</b>:  Write app once, send to other people and they know how to deploy.  Now you don’t have to develop an org that knows how to install app, and knows what other packages are required.  The containers provide the user the automation for packaging with automated scripts inside container.  Thus, easy, more efficient and faster to deploy/run apps.  Specifically with open distributions e.g. Fedora, an ISVs can reduce efforts.</p>
+<p><b>Use case 4</b> –Have an app that requires lots of parts for a multi tiered application requiring workflow component, WebSphere component, database component,  math lib component.  Containers allows you to put them in 4 diff containers, so if you are not interested in say the workflow component, the user would only deploy 3 of the containers.  This makes it more flexible.</p>
+<p>This allows the user to break down apps into different parts and use the only pieces needed.  Today, even our own</p>
+<p>IBM Software products and ISVs ship the entire product where one installs 25 pieces to get possibly only one needed component</p>
+<p>If your app required all components, put them in one container.  If app didn’t, keep them separate as if pieces are optional, as its like choosing Lego blocks to build what you want and how you want it to look</p>
+<p>Editors Note: Dale Hoffman is the most reluctant blogger yet to post on mainframe debate, but given the interest on Docker since we announced it on the platform, he felt compelled to put pen to paper!  Utz Bacher and his insight and feedback on this post cannot be over stated.</p>

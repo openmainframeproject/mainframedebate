@@ -1,0 +1,56 @@
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Tekton, Red Hat OpenShift Pipelines, and GitLab Runner available for s390x&nbsp;</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>In the technology world, there are so many trends that come and go, there are buzzwords used for months and years. However, is there a bigger buzzword than DevOps? In the software space, it is not hard to find a blog post or article that talks about DevOps or any of its variants, such as GitOps, DevSecOps, or simply Continuous Integration and Continuous Delivery (CI/CD).&nbsp;&nbsp;Buzzword or not, more specifically CI/CD software has been very successful and adopted by many, we can even talk about the different generations of CI/CD tooling.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>As is customary in all my blog posts, I discuss how open-source software brings innovation and fuels new technologies across all platforms. In the case of the s390x processor architecture for IBM Z and LinuxONE, the talk about DevOps is more recent. With the increased use of agile methodologies, the focus on constant deliveries, and the use of containers, we have seen an up take in the use of CI/CD tooling in the mainframe.&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>With more container-based applications, there is the need to orchestrate, manage, and scale large deployments of containers. The leader in this space is another open-source project,&nbsp;<a href="https://www.ibm.com/cloud/learn/kubernetes">Kubernetes,</a>&nbsp;which, in turn, started another open source segment focused on cloud-native open source software that runs on Kubernetes.&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Tekton</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>An open-source project that originally started as a&nbsp;<a href="https://knative.dev/">Knative</a>&nbsp;component and then branched out to become&nbsp;<a href="https://tekton.dev/">Tekton</a>&nbsp;is a CI/CD project that runs natively on Kubernetes alongside all other containerized applications. As an open-source framework for creating CI/CD pipelines, Tekton includes pipelines, triggers, dashboard, CLI, and operator. Every Tekton pipeline is a Kubernetes resource managed like any other container or pod. Tekton is a&nbsp;<a href="https://cd.foundation/">Continuous Delivery Foundation</a>&nbsp;project with contributors from companies such as IBM, Red Hat, Cloudbees, Pivotal, and Google.&nbsp;</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Tekton is available for the s390x architecture and works well with existing CI/CD tools, such as Red Hat OpenShift Pipelines, Jenkins, Jenkins X,&nbsp;<a href="https://www.ibm.com/cloud/continuous-delivery">IBM Cloud DevOps</a>,&nbsp;&nbsp;<a href="https://developer.ibm.com/open/projects/kabanero/">Kabanero</a>,&nbsp;<a href="https://github.com/kubeflow/kfp-tekton">Kubeflow Pipelines</a>, and Knative. Thus, other CI/CD tools could be used on the s390x processor architecture with just some testing and validation.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Red Hat OpenShift Pipelines</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p><a href="https://docs.openshift.com/container-platform/4.7/cicd/pipelines/understanding-openshift-pipelines.html?extIdCarryOver=true&amp;sc_cid=701f2000001OH74AAG">Red Hat OpenShift Pipelines</a>&nbsp;is another CD/CD tool now available for IBM Z and LinuxONE. OpenShift Pipelines is a fully supported product that runs on Red Hat OpenShift and is a cloud-native CI/CD offering based on Tekton.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Red Hat OpenShift Pipelines is a serverless CI/CD offering that runs pipelines with all the required dependencies in isolated containers. Every step of the pipeline can scale independently to meet the pipeline demands. It provides pipeline templates and provides a curated list of Tekton Cluster Tasks for use when authoring pipelines manually or through the graphical pipeline builder for tasks such as git commands, building container images, and pushing to image registries.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>GitLab</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>Continuing with open source CI/CD tooling for the s390x processor architecture, I have to mention another important player, GitLab, which started as a source code management tool and grew to one of the most popular&nbsp;<a href="https://gitlab.com/gitlab-org/gitlab">open source end-to-end</a>&nbsp;software development platforms, with built-in version control, issue tracking, code review, CI/CD, security scans and more.&nbsp;&nbsp;It has more than 1,300 open-source contributors and a growing community.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>To run CI/CD capabilities in different machines and different environments, GitLab it uses&nbsp;&nbsp;<a href="https://docs.gitlab.com/runner/">GitLab Runner</a>, which is typically installed in an environment separated from the one hosting the GitLab instance.&nbsp;&nbsp;For Linux distributions on the mainframe (s390x), an official fully supported commercial version of GitLab Runner under the brand name&nbsp;<a href="https://www.ibm.com/blogs/systems/expanding-our-devops-portfolio-with-gitlab-ultimate-for-ibm-cloud-paks/">GitLab Ultimate for IBM Cloud Paks</a>&nbsp;can be&nbsp;<a href="https://docs.gitlab.com/runner/install/index.html">easily installed</a>.&nbsp;&nbsp;GitLab Runner is open source and written in Go. All major Linux distributions are supported, but you can also compile the GitLab Runner Go source code to create your own binary on the Linux distribution of your choice.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>GitLab Runner can run in a Docker container and in a Kubernetes environment.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading {"level":3} --></p>
+<h3>Summary</h3>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>With these three examples, Tekton, Red Hat OpenShift Pipelines and GitLab Runner you can see that open source is driving DevOps practices and tooling.&nbsp;&nbsp;The availability of CI/CD for different processor architectures is no longer an issue; you can find these and other CI/CD software, such as Jenkins, in public repositories.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>While DevOps goes beyond tooling and is, in fact, a different process and mindset for teams and organizations, DevOps tooling based on open source is more prevalent than ever before. These tools with availability for s390x set in motion a new phase of collaboration between the developers and admin teams (operations) of this extraordinary platform.&nbsp;&nbsp;CI/CD tooling is expected to increase even further as data science, AI, ML and DL applications become more prevalent in the mainframe.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Try it, embrace DevOps, test the different tools, and bring development and operations together with higher confidence, speed, and accuracy to shorter release cycles and increased return of investment.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p><!-- /wp:paragraph --></p>

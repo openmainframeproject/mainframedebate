@@ -1,0 +1,645 @@
+<p>When a hacker finds something interesting, it makes sense to pay attention. That's why we love sitting down with Chad Rikansrud, aka <a href="https://twitter.com/bigendiansmalls?lang=en">Big Endian Smalls</a>, and find out what he's been up to since our last chat. Topics range from... just about everything to just about everything else.</p>
+<p>To listen to this episode, search for "Terminal Talk" on your podcast platform of choice. iTunes users can go <a href="https://itunes.apple.com/us/podcast/terminal-talk/id1246775230?mt=2" target="_blank" rel="noopener">HERE</a> to subscribe. The episode is also available as a raw MP3 file <a href="http://terminaltalk.net/PodcastGenerator/?name=episode_57_-_chad_rikansrud_-_hack_to_the_future_-_10.1.2018.mp3">HERE</a>.</p>
+<p>As always, please drop us a line on Twitter, we're <a href="http://twitter.com/TerminalTalk">@TerminalTalk </a></p>
+<p>Transcript as follows is machine-generated and may not be 100% accurate. For the best experience, make sure to listen to the audio.</p>
+<p><!--more--></p>
+<p>Frank De Gilio:     Hey, before we start with our interview with Chad Rikansrud, we felt…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              The Chad Rikansrud.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Oh, the Chad Rikansrud, sorry, I did not give him the respect of which he deserves. Of course, this is a guy who all of my communications with him seem to be about (Gerhard Richter) but beyond that, before we get started with that, we want you to know that we did record this chair. We did not have all of the equipment that we normally have in the studio and it will not sound quite as good as our normal one does.</p>
+<p>&nbsp;</p>
+<p>It’s decent but, you know, if you’re getting ready to fire up that tweet to say, “Hey your broadcasts sounds blah, blah,” just put the tweet away.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes, step away for about 30 seconds.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes, step away from your Twitter account.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes, just go outside.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Also, before we start we should definitely do a plug for our sponsor.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              We definitely should. That’s what we’re here for.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes. the nice thing about being in Poughkeepsie is we get to talk to a lot of experts in Z. We also get to go to these conferences and rub shoulders with clients and other business partners who are really, really into Z. So we think that’s a big part of what makes what we do cool. Now you have an opportunity to get to talk to some of the IBM experts without having to listen to us, although you should still do that.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Definitely should still do that. Expert advice for Z, you go to ibm.biz\z_consult. It really couldn’t be easier. You fill out this little Web site form that says, “Hey, this is what I’m kind of stuck on or I want some information on. This is the best time and the best way to reach me,” and IBM will pair you with somebody who’s an expert in that field who wants to help you.</p>
+<p>&nbsp;</p>
+<p>So no reason to, you know, wait until the next conference call or to get, you know, wait until your rep is coming out there. This is not a replacement for opening a defect or talking to your IBM rep. It’s just something else and we think it’s kind of nice.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes, imagine being able to talk to some of the cool people that have been on Terminal Talk…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              The coolest people.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     …like Anthony Sofia or Brenten Belmar</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes, Terminal Talk alumni.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes, that’s the really coolest of the cool.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right, yes. If you need help with your podcast, I guess we could help out, too.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Maybe they haven’t sought us out.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     You know, I don’t think anybody’s going to say, “Hey, can we talk to Frank and Jeff.”</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              You just tarnished our reputations, you know.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              But anyway…</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              …expert advice for Z at ibm.biz\z_consult. Now onto the Chad Rikansrud.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Welcome to Terminal Talk, a podcast…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              No, that’s not going to work.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Welcome to Terminal Talk.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Welcome to Terminal Talk, a podcast on mainframe and mainframe and mainframe related topics. I’m Jeff…</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     And I’m Frank.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And Frank was doing some - I think that was in good taste.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Oh, got it. I think we’re good.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   That’s for the Terminal Talk you’re describing. You want me to do the intro?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right. What Frank actually just coughed up, Frank, you know…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Frank just coughed up a lung. Why don’t you cough up like five bucks</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              We’re here bleeding for you literally.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   . We’re actually bleeding for you.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Okay.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Welcome to Terminal Talk, the podcast on mainframes and mainframe-related topics. I’m Frank.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     No, you’re not. I’m Frank.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I’m Jeff. And we have with us today - let’s do it one more time.</p>
+<p>&nbsp;</p>
+<p>Welcome to Terminal Talk, the podcast on mainframes and mainframe-related topics. I’m Jeff.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     And I’m Frank.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              And we have with us for a second time and I believe Terminal Talk top tier subscriber mainframe hacker -- no, not that one -- the other one - Chad Rikansrud.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Hi guys.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              How’s it going, man?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   It’s going well. It’s going really well. I feel like it’s been, like, 274 days since we did this last.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Something like that.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Roughly. Yes, so I’m happy to be here. Thanks for having me.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Well, good, I think we should just get right into it because we have a lot of very important questions to ask.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Okay, I didn’t know that. I’m a little nervous now.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Oh, good, so the first question - most important. My voice is going because I’m trying to encrypt it. How much more encryption will it take before you can’t hear me at all?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I think what you’re going to need right now, Frank, is the vocal blockchain if you really want to make this work. Because I can tell you’re trying to roll your own and you should never do that.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     No.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Blockchain will sort that out for you.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Right, that’s what I’ve heard.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Great, we’ve started off well. So now that there’s pervasive encryption on the system so how do you justify taking money because nobody needs you anymore?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Right. It does solve everything and so what we do is basically go around and tell people not to use it because one is I’m not going to be able to feed my family, you know. I think it’s not a panacea as we’ve discussed before. It fixes a nice suite of risks but not all of the risks - not all of the things. Data exfiltration is the name of the game with pervasive encryption in terms of what it does so yes to it.</p>
+<p>&nbsp;</p>
+<p>Please make sure that you’re careful when you do it because as it turns out, encryption destroys your data and there’s only one way to get it back so you should know what you’re doing before you flip that magic PE switch on. But it definitely is a good tool to use and we get a lot of people using it. But you still need to do the basics.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Do you help people with that a lot? Because there’s a lot of work. I mean, I heard some really high-level person said you just click something and it’s done but I’m pretty sure there’s a lot more involved.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, I think the click something is the purchase order. But the actual implementation of it is - it takes a little bit - it takes a lot of planning and there’s a couple different ways to make it work on the system which are actually fairly slick from the manual embedding (unintelligible) in your JCL to the left manual SMS routines to the very slick but a little more complex to implement using (Rack Up) to deliver the keys.</p>
+<p>&nbsp;</p>
+<p>The ITSF set up and the key management is really the lion’s share of the work. But the - once it’s going it’s a fairly slick and transparent process. But it is a couple of switches -- at least two or three switches I’ve gotten turned on.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Toggle switches, toggle it back and forth like that.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Correct.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right. I mean, it seems like there’s a lot more to understand than about this than just, you know, I have this thing I’ve saved so you just recently got back from the cool hacker conferences out in Vegas.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, just got back from Black Hat.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              When you’re talking to the - I’m assuming mostly non-mainframe people there are - is, you know, what kind of questions do you get after you’ve talked about like canvas, what you’re doing, and, you know, the business aspect of things?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   It really - the people I run into at non-mainframe conferences - so the unwashed masses basically…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right, exactly.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …the people that I run into -- the uninitiated -- fall into one of two categories generally 90% of the time either I agree with you, I know your work, or I know of what you speak and yes, the mainframe needs some love and attention. We’ve neglected it for too long or you still run those things?</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   That’s the other hand, right? And so the first one is a, you know, more of a nuanced conversation about where we need to work and what we need to do is it technical, is it service, is it a combination of both, and the other one is kind of fun because it’s like, yes, you know, how you’d get there? On an airplane, okay, well, you used a few mainframes in that process, you know. Have you run through an ATM yet? Well, no, because it’s Black Hat.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Awesome.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Presumably you have used a credit card or an ATM, well, then you’ve probably run through a few mainframes. So there’s a lot of education sometimes that has to be done before you can do an opening conversation.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              But like where do you start? Is it a discussion of Parallel Sysplex or (kicks) or do you say, “Okay, imagine a thing that’s a refrigerator but Slack is making a lot of noise.”</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   It depends. The talk I gave out there was about writing exploits for mainframe and how to get started in finding vulnerabilities in code and it was really technical and it was very much like debugger level op code level, you know, present world of operations kind of talk.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Wow.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And I started out basically only with, you know, two slides, like, here’s a mainframe. It’s important. Here’s the numbers on why it’s important. Now we’re going to get right into it and I’m speaking to them as if they already know everything they know to be there. Because there’s been - there has been lots of talks about basics on the mainframe, why is it important, what’s important, the kind of stuff you do.</p>
+<p>&nbsp;</p>
+<p>And if I have 50 minutes to talk to an audience and they’re a technical audience -- which this is a fairly technical conference -- I’m just going to get right to it. And the goal is hopefully that the talk becomes a reference work…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …that maybe I - maybe either somebody who knows mainframe, wants to learn more about it or wow, I didn’t know you could do that kind of stuff, or somebody who doesn’t says, “Hey, you know, I’d like to get into this and get to the green light back at the ranch” when they go home and then they can use that as, like, well, this guy said this thing and I try to give them, like, enough in a reference material where they can go and then learn more about it. So it depends on the audience.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I’m talking to somebody in the like more in the sales capacity then we have to start from a so usually an opening is something like, “How are you doing vulnerability management in your organization on the mainframe?” And that starts out with like a, “What?” Or a, “Well, we don’t,” or “It’s out of scope.” And then we go deeper and deeper and deeper but the concept is such a big topic - a big spot for them, you know.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   So it really depends on the audience whether it goes down the road to wet services or the (unintelligible) password, whatever.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Cool. So you do a lion’s share of your work is mainframe related, right? Do you have a lot of negative experiences with mainframe - is there a lot of condescension from people who have been doing mainframe a long time, you know, hey, we already know what we are doing, you know, what the hell are you doing here?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   So when I first started doing this I got a lot of that because in, you know, some of it was just being new on the scene. Some of it was just maybe becoming, like, a little too hot. Some of these things I get a lot of that. I get a lot less of that now. Like, it’s generally, you know, sort of sharing these other conferences with the talk. I read all the feedback. I will say that in Share, what was the last Share, say, Sacramento?</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Mm-hm.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Okay, the talk there about Mark Wilson and I had a talk about - it was called using SMP/E and it was basically a discussion around how if you don’t protect SMP/E it can be used to install malicious software unbeknownst to you and that’s going to be hard to find to get out of your system because of how deeply and integrated that would be. Very well received. I got a great education from John Yields after that about why we can’t sign our code.</p>
+<p>&nbsp;</p>
+<p>In fact, he gave a talk here this week about why we can’t sign all of our load modules and everything which is exceptional talk, highly recommended if you can read it why that is not feasible on the platform. That was great - great outcome, great feedback, but there was one comment from the feedback that was like…</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Which is of course the one that we always focus on, right?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   It’s like, you clearly don’t know what the h you’re talking about. This is nothing but (unintelligible). No idea about the mainframe or SMP/E or anything like that and on and on and on. And it was an anonymous comment on there and I was just like, “Wow, that’s - I just - I mean, you know, I” when you get past the chuckles of it…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …and you go back and think, like, where is that person? Were they were because you’re going to be on a show very technical how this works and, you know, I’ve got John agreeing with me, like, yes, that would work.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   You don’t do this, you know, and then it’s like, well, where are they coming from? So I still get some of that sometimes but I think some of it is either willful ignorance or, like, listen, I’ve got five years left in my career.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I don’t need to start thinking about…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Don’t make this hard for me.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Don’t make this hard for me, right.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I’m on…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And the other thing about it is if you’re presenting and someone says, “I can show you that you’re wrong, blah, blah, blah, you’re wrong,” all they have to do is raise their hand and say, “You’re wrong for the following reasons.” And if they’re correct, you’ll say, “My God.”</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And it’s just all - everything is crumbling before me. And I like that.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I mean, if they can do that, that’s great because - but the fact they did nothing and then did it in an anonymous comment…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Suddenly I’ve become Reddit.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   With less caffeine let’s say.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              With more -- or more. (Unintelligible) I mean, you are known around Share as like, you know, the security guy.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              If you’re like all security minded and everything like that, how come Frank and I are the only ones wearing tin foil hats?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Honestly, I just assumed that was, like standard Poughkeepsie-issue head ware. I didn’t realize that you were doing that just because I was here.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     I mean, you got to stay safe. There’s…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     …hackers and stuff.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, but…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   They’re all over. But I just assumed that was what they gave you in Poughkeepsie to make sure that the government doesn’t, you know, get all the information out of you.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              So that - it doesn’t help.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   It doesn’t - I know, it doesn’t help.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     I didn’t know we were doing it wrong. I didn’t even know we were allowed to not wear them.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              It’s hard to keep them on.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     It doesn’t make it a lot easier to get through airport security.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes, all right, I’m just going to take a second and take mine off.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Now?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Oh, I had no idea how tall you are.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   But it’s that context, basically. I don’t need to know any of these things.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Oh, my God. So what sessions have you been attending and then doing this week up there?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, I’ve been to a few security session - quite a few security sessions, vulnerabilities on the mainframe and some stuff about encryption. Phil has a session about why we can’t -- which was just - Phil is fantastic. And if you want your head to expload like that…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Can you give us the 30-second version?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, I would love to, so the - my contention was prior to this - so just to set it up for you…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   You know, I’m going to ask them and the way the iPhone works is you have this - encrypting your program is kind of a chicken and the egg because you’re encrypt it and something’s got to prove that it’s okay.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   But in order for that to work well it’s got to start from, like, the first (unintelligible) load. You’ve got to have something in hardware that can verify the first bit of code because then it’s kind of (unintelligible) chain…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right, you must first invent the universe.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Absolutely, right? So - but then you’ve got this code and you have your Mac, Linux, everything has the binary that are signed that there’s a certificate and you know if you tried to run one on your Mac that it doesn’t work. So why can’t we do this on the mainframe? So this was my sort of naïve, you know, thing is we should do this on the mainframe, we’ve got some vulnerabilities here. The reason is because of how mainframe binaries are constructed and voted and safe.</p>
+<p>&nbsp;</p>
+<p>For instance, the typical -- atypical -- the typical load mod- mainframe binary is the load module. And so when the (unintelligible) compatible -- it’s been around forever -- and the same load module will turn a functionality even in terms of building block can be built four, five, six different ways. Order statements in how it’s link edited.</p>
+<p>&nbsp;</p>
+<p>There’s all kinds of other stuff about how the relocation segments and how the external segments are populated, when they’re populated, then you throw in program objects, right, the other type of binary that lives in a PDSE or lives in UNIX they have an entirely different concept and there’s four or five formats of those, right?</p>
+<p>&nbsp;</p>
+<p>And then you throw in patching when you patch something with a PTF, when you’ve got something that, you know, is an initial patch and then this supercedes this and this is a co-rack and whatever, how those are applied, those are multiple options that will fit legally how those can be applied. But the actual staff binary -- when you get all done -- is rearranging it a couple of different ways. And as you know for a cryptographic signature to work, it’s got to be fit for fit…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …from start to finish exactly the same. So the answer is basically in how these binary structures, the modularity, the flexibility, the backwards compatibility of these binaries doesn’t allow us to bind them in any meaningful way. There’s like a few educations of things you could sign, like, single mod, load modules, and certain types of program objects but it’s really an edge case.</p>
+<p>&nbsp;</p>
+<p>The thing that they - that everybody kind of agrees what they could sign that would add some value to the process is the packages you get from SMP/E as you download from IBM. Those could have a signature because they’re created, they’re (unintelligible) you know what you ordered, what you’ve got and we can verify that. Right now it’s just a hash so if you could write to that file, you could recreate the hash. But if it’s a signature that wouldn’t work.</p>
+<p>&nbsp;</p>
+<p>So it’s really, really interesting and if you went all through the gap as well that you’ve gotten over the years and basically, you know, could you reduce memory (unintelligible) history on this as well as matched it up with the RSP that has to do with programs finding who submitted - saying this is complicated.</p>
+<p>&nbsp;</p>
+<p>It’s actually really a complicated (unintelligible) so this was a great education and we just went through it in, you know, agonizing detail (unintelligible), right? The kind of stuff you like if you’re (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     I’m like (unintelligible) agonizing detail (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I’ve been doing some AI sessions here this week, you know. It’s kind of my new gig is going artificial intelligence, deep neural network, and where we’re starting to see a lot of the AI stuff being used is for intrusion detection and trying to find, like, anomalies and stuff like that.</p>
+<p>&nbsp;</p>
+<p>And there are some people who are talking about using, you know, straight up AI models to try and detect, you know, somebody’s trying to hack into the system or somebody’s trying to inject some code. Is that something that you’re dealing with or seeing the - in your studies?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, yes, yes. I have so many funny things about like what you just said but I should click ultimately somebody pointedly said one time like is AI just someone’s if statement and when it breaks down it’s kind of a whole bunch of if statements…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I think I saw a…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …in my mind.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              …yes, I don’t know if it was on Twitter or Reddit or something like that so it was the Scooby Doo ripping the mask off of the bad guy and he was labeled as AI and underneath it was just a whole bunch of ifs all over the place.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I didn’t see anything that is practicable on the mainframe on this space and I think the closest thing I’ve seen is talking to some people about -- I hesitate to call it AI -- because when I think of AI I think about things that you can really, like, you know, sort of like the Google bots where they fed them nothing but Reddit for weeks on end and then they ended up being like horrible racist files and I may as well just shut them down because of all this…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Oh, yes, but it comes back to that watching these drug commercials I learned if I watch (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …yes, but I know, you know, so what I’d like to talk more about is the statistical analysis or anomaly detection kind…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …of stuff is absolutely I’m starting to see the right kind of - here’s an example. We had a conversation with a vendor last night who does some kind of like software-based storage stuff, right? And I said, “Well, you’re kind of in a unique position here because - and I haven’t talked about this for a while where I think there’s a bash cycle. Bash cycle is fairly predictable in terms of, like, statistical analysis of how much the files change, how much do they grow, how much do they shrink?</p>
+<p>&nbsp;</p>
+<p>The overall, you know, rate of change of data, of numbers, files created, deleted, that kind of stuff. If you map and it’s relatively the same and predictable maybe at a high month end or a quarter end but again, it’s still going to be the same pattern, right?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   If you think about from a lot of the things that bad guys want to do is going necessarily the thing about ransomware, right, or something like that. That’s going to change those numbers markedly. So if you start talking to some of these storage vendors, like, you see this, right? You’ve got workload managers, you’ve got, like your CA, your kind of scheduler tools. And - but you’ve also got, like, the backup and recovery (unintelligible).</p>
+<p>&nbsp;</p>
+<p>They’re all going to have a (unintelligible) so if you start to see, for instance, like more backups being scratched tonight than, you know, a standard deviation plus to…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …than you normally see. Or these files are getting backed up and they - the difference between how they are normally backup which is incremental is 10% difference is now a 90% difference. You’re in a great place to tell us that something’s up.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And these are the kinds of things I think we should be looking at in terms of statistical or anomaly detection. Same thing you can do with network, right? You get the same kind of flow with network, you know, 9:00 am you start to ramp up and then pack up the location unpack it. Start to ramp back down about 6:00 and all of a sudden you see these anomalies where it’s like, “We’ve got a range of ITs that are having a tremendous amount of - so maybe it’s a conversion.</p>
+<p>&nbsp;</p>
+<p>If you get a merger and acquisition behind sort of, you know, like that or…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …so I think the beauty of the mainframe is that all the data’s there. You have way more data than you’d ever want. But in analyzing that data, you get pictures of it I think. And I don’t think it has to be -- not AI -- you can call it AI if you want. We could call it machine learning, we could call it blockchain but I think we should call it blockchain. I think that’s what blockchain is.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              There we go. On blockchain I think.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Hold on, I just (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Sounds better.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   But I think that what this really is is some good old-fashioned statistical analysis, the kind of stuff that the manufacturing industry has been doing for a long time when they look at anomaly detection quality manufacturing process and that kind of stuff.</p>
+<p>&nbsp;</p>
+<p>Like, this is the knowledge on how to do this is out there and I think those are the kinds of things we should start thinking a little bit beyond the job failures, security violations, and start looking more at the metadata of how many jobs are running and what time and how big are the file chains and the extent that are being created and the allocations and all that kind of stuff to get to the next level.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              The stuff that you would look at in hindsight and, you know, there’s…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Forensically, yes. There’s a big effort or a big push right now to say we’re going to use AI to replace, you know, the Z expert. And obviously I don’t think we’re in a state to do that. I don’t think that it is even the right thing to do. I think the right thing to do would be to say, “Hey, Mr. Expert, I’m going to make your job easier and point you to something that we think looks like this could be a problem.”</p>
+<p>&nbsp;</p>
+<p>And obviously they can swat at that and go, “No, I know this is a merger acquisition. This is just somebody, you know, this is a scheduled kind of thing. Doesn’t fit the pattern because of that reason.” But, you know, yes, it’s something that comes up a lot, you know. Fiscal deviations and anomaly detection and it’s equally interesting and terrifying at the same time.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes, I mean it is - the mainframe’s a great platform to do this because one of the biggest risks of the mainframe is that - one of the biggest problems is the concentration of risk, right?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Right. We’ve talked about this I think like if you get an active mainframe in (unintelligible) you have access to the stand.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   You have access to all the networking stuff. You have access to all the security stuff where -- in the distributive world -- those are broken out so if get back to the UNIX platform you don’t necessarily have access to the federated security stuff.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Unless it’s Jurassic Park.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Unless it’s Jurassic Park, right, one of those little (unintelligible) running around, yes, that’s different. Then you just reboot.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes, you’re good.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   You can reboot but it takes a long time.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              You need to have the password and that (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Wow, that went right in the hole. But I think - but the thing is, like, so that’s a big risk and that’s a big problem on the mainframe. But what in terms of anomaly detection that’s actually great because all of the data that’s being about all of things within one concentrated place, you don’t have to try and correlate your switches with your Web server with your ask or what your databases are saying to figure out if there’s something going on. Because it’s all right there.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And you ought to be able to do it. And you need to crunch some numbers, right? But you ought to be able to do that, you know, on the platform to be able to get that information to get the kinds of alerts about activity that you’re looking for. Behavioral analysis…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Oh, yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …fits in that a lot like (unintelligible) kind of an AI-type model. But…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              In archisymmetrical that…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, next podcast, ladies and gentlemen, tune in while we all argue semantics.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     We can do that easily.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              How much of the work that you do is forensic? How much is kind of proactive?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I mean, there’s a - there’s a slide in a talk I gave a while back in now it’s been sort of used by lots of other folks where we talk about the disciplined incident response which is a discipline DFIR, right, data forensics incident response I think is what that stands for?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I was going to come up with some conclusion.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Well, give me some time. Give me your best shot.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              That’s a different process.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     I think he had a different meaning than yours.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I am the AI voice. So that is a non-existent - it’s a fairly mature discipline outside the mainframe. It is a non-existent discipline in the mainframe outside some very, very small circles especially incident response which is like what do you - what are the first five things you do if you think you have a breach on the mainframe, right? And you get the look which is probably not unlike what you’re guys are going to do, right?</p>
+<p>&nbsp;</p>
+<p>It’s like, I don’t know, tell me what they are, you know? It’s like, you know, full stop, right, but don’t shut it down, right?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Shut down your key communications, shut down your activity, don’t shut the systems down, don’t IPL the system, these kind of things. All this kind of stuff is a somewhat immature discipline elsewhere. We don’t get to answer your questions. We see a little bit of the forensic side of what happens like financial crimes and that kind of stuff. A little bit of that - the vast majority of it is testing security controls that exist or finding weak or missing security controls.</p>
+<p>&nbsp;</p>
+<p>I mean, that’s kind of the name of the game right now because you think about an incident response as sort of a discipline that comes once you’ve got some of that down. You can’t text people from breaking into your house. There’s really no point in my coming up with a massive, you know, like how do we put our house back together after they break in. But it’s like, well, you really should just stop them from coming in to begin with. Like, that’s your best prevention is your better client event right now.</p>
+<p>&nbsp;</p>
+<p>Until you get to the point where you’re doing prevention and detection as well. The unfortunate thing is the world has surpassed us in terms of this sophistication and so we really need to come pushing forward on a lot of response and everything. It’s a great big gap that somebody should fill throughout their (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              And how can people get (unintelligible), right? We were going to save the plug for the end, but now might be a good point in the - remind people who you work for.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, so I work for a company called RSM Partners and we do all things Z from managers, professional services, security, security software, so you can reach me chad@rsmpartners.com or go out to www.RSMPartners.com or if you want to have a more casual conversation about something I’m at bigindiansmall is on the Twitter and I get quite a bit of interesting traffic there.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              You’re a good follow and you’re followers are good followers.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, follow me out there and Phil Young…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Who?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …mainframe 767.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I’ve never heard of him.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   He’s the other guy. He often gets mistaken for me. Lots of people, like, chase him around and be like, “Are you bigindiansmall?” and he’s like, “No, I’m the other guy.” That happens all the time. It’s awkward for him but yes.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     It’s weird because he’s the one that always wears, you know, the…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   He’s always got the hoodies on, yes.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Anthony, you know, where’s your hoodie, by the way?</p>
+<p>&nbsp;</p>
+<p>Anthony:               Yes, I didn’t bring it actually. No, I don’t bring it to Share.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Oh, you’re funny.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I have a kind of a technical question about…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              …security and encryption for you.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Is it possible to, like, encrypt something so much that, like, all the bits flip around, like, all the way? And all the ones turns into zeros and then back all the way to the other side of the one and, like, the thing is like encrypted but it isn’t because it’s just flipped completely around because it’s like super encrypted but it’s really not. What about that?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Frank, you put him up to this, didn’t you? You’re just laughing.</p>
+<p>&nbsp;</p>
+<p>Yes, this is like the - this is like occasionally we will - so I’m not going to answer that question. So occasionally we’ll - we do a lot of reverse engineering of software and occasionally we will find just ridiculous software from vendors or customers have written themselves where they say, “Oh, don’t worry, we save that password or that secret something encrypted,” and I look at it in memory and if you’ve done this long enough, you can start to see things. Like I know what Basic before encoding kind of looks like. (Unintelligible) that’s just a text in coding.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   But not, like, you’ve made it so it can be loaded on a Web page. Yes, I could email that to myself. You’ve done the hard part. But this is an exclusive core, right, and what you’re seeing I think is like the double exclusive core.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right, that’s it.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   They (unintelligible) time all even numbers. That makes it really, really (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     They’re just basically trying to re-work the whole, “Could God make a burrito so hot that even he couldn’t eat it?”</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Right, like what (unintelligible) and I are like, so complicated that even he couldn’t…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Well, the rule I’ve heard is that one should always (unintelligible) on encryption speed. Is that correct?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   That is the Number 1 rule. It’s super easy, there’s lots of how-tos out there.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right, yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Go write your own. I mean, if you don’t like the password algorithm that IBM used on their mainframe, write - I highly encourage them to write their own. Or how good is the sarcasm detector?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I worry sometimes. You know, because somebody’s going to go and -- God bless them -- is going to go and transcribe this whole thing…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …and I don’t think they have like a keystroke that says #sarcasm. We’re being a little sarcastic right now.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   But I think the answer to the question is - and the old adage has always been like if you have - if you write your own crypto algorithm. First of all, don’t write your own crypto algorithm.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Second rule is if you have to write your own, see Rule Number 1. But the real rule amongst those who are sort of blessed to do this is if you write it, you get it peer reviewed, you publish the algorithm far and wide, you get it peer reviewed by everybody you can and make it stronger, better and because a good algorithm the only thing you should have to protect is the key material.</p>
+<p>&nbsp;</p>
+<p>You know, for instance, if I’m logging onto your system, I know it uses (unintelligible) or whatever it uses, I know how that works and I can - you can give me the crypt- the cyber text - the actual encrypted part of it and the algorithm and a good algorithm that doesn’t - it should be able to stand up against that. So it doesn’t matter what the site protection is or if I have it it doesn’t matter what the algorithm is actually going to encounter. If I don’t have the team material then it basically stands alone.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     So one of the things that IBM has been talking about is encryption algorithms that even the quantum won’t be able to help you decrypt. Do you know anything about what that means and how can that…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   No, I…</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     …be done?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes, I don’t know how it can be done but what the problem that quantum provides is basically this and there’s a primitive in encrypto that basically says that no crypto is unbreakable, right? If it’s a matter of what we refer to as computationally feasible so, for instance, IBM X-Force was out at Black Hat booth out there. And apparently the people over in Z lent them a bunch of servers. And they had this rig set up there where you could type in a password and it would encrypt it with NTLM.</p>
+<p>&nbsp;</p>
+<p>NTLM is the encryption password hashing algorithm used in Windows. It’s very, very ubiquitous. And the early one was trivial to crack and the latter one is actually not so hard either. But they had this massive array set up there. You could put in any eight-character password in it and within under like six minutes it would say your password back out at you, just crack it real time, right? Which is (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Put the zeros for Os.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Well, that’s…</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     and I put 3’s for E that’s…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   So that makes it - so that - what that meant is, wait, I think that’s the answer that Jeff was looking for to an earlier question. You just rotate everything. Roth Thirteen? Double Roth Thirteen.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              That’s way better.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   With a Double XR chaser. And then you’re basically set.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              We killed him.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   We did it.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              We did it, guys.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Hey, we just killed Frank. I wish this was a video conference so I could…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Frank is on the floor right now.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I think we killed Frank.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              He’s going to pass out.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   All right, just fall that way so you don’t …</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Sorry.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Fine, thanks for that. Could you repeat that? You know, so the issue is could crypto algorithms for secure passwords are necessarily slow. I mean, when IBM ware went from desk to KDFAES they slowed down by a massive order of magnitude.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   And the reason that that’s good is because is if I’m trying to brute force it by choosing candidate passwords and then seeing what the output is and then seeing if they match, you won’t have to be slow as possible. So computationally and feasible means that if I’m going to brute force a key space of all of the possible things, okay, so on some kind of password or whatever, that all, you know, it would take all these computers we have like a trillion years to do that, right?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Quantum basically provides the feasibility to like that number becomes computationally feasible becomes no longer is it feasible. And so we have to come up with algorithms that basically can withstand the (unintelligible) power or whatever you call it of quantum. And I am not an expert in quantum whatever but, I mean, I understand it at that level that we’ve got to be able to like, you know, we got to make them hard -- really hard -- really slow and we’ll be able to work it out so here’s WX or (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              That was the wrong word.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes.</p>
+<p>&nbsp;</p>
+<p>Anthony:               So maybe you’ve done a lot of hacking part of your work. I’m wondering if you can hack into the hotel and fix it so that the faucet doesn’t go from ice cold to, you know, lava…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes.</p>
+<p>&nbsp;</p>
+<p>Anthony:               …in one second.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Somewhere in between.</p>
+<p>&nbsp;</p>
+<p>Anthony:               Is that possible?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   No, absolutely, I can do that. As a matter of fact, they use a - well, they use an X86. This is going to be hard. I heard that the entire faucet management system SMS (unintelligible) job so I imagine that by the time I get my iPhone booted back up (unintelligible) that’ll be taken care of.</p>
+<p>&nbsp;</p>
+<p>Anthony:               Awesome, I appreciate that as well.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              What is something that somebody perhaps mainframe professional or not just on a strictly security minded, you know, can be doing to, you know, be a better citizen in this world of evil hacker people?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Advocate for this operation.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   I think the Number 1 thing which just feels kind of trite, but is challenging sort of the status quo group think that’s out there. I mean, we still get, you know, the mainframe can’t be hacked or it’s some kind of inherently secure thing.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Yes.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Right? Which is just insane. Challenging that status quo, I would also invite them to really, you know, deep down a lot of these folks especially ones (unintelligible) some of them know these things. Some of them have this idea, like, start to talk about that in more of (unintelligible) forum because some of that happens really so they feel they’re sharing state secrets and I think we have to be a little more open about it.</p>
+<p>&nbsp;</p>
+<p>The nature of securing the platform as a whole will come from sort of the deferred (unintelligible), right? Where it’s like if we all start doing this and we all believe that it is correct then we’ll all start improving our game a little bit. But the nature of business -- clinically or otherwise -- is such that were not going to spend money on a threat till we really (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Right.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   So we either need to have like clear enough information out there where people start to get nervous because it’s no longer (unintelligible) storage or we need you guys to go just like hack a bank somewhere and like just tear that thing down. That’ll get people off their wall, right? I think if I do that kind of stuff, so, you know, Frank’s looking for a job.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              I have just one more question. This, you know, going back to your hacker roots. If you’re such a good hacker…</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Okay.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              …what’s the last thing I downloaded?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Right, I got to think about this for a minute. Hang on, so, I’m coming up with, like, lots of women’s names.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Wow.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   It’s weird, it’s got all these female…</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              (Unintelligible).</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   …names and they’re all - I think it was Mambo Number 5. The hip hop (unintelligible) street version, no, wait, wait, can’t say.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              That’s good.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   How we doing? Am I in?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              He’s really good, it’s like, wow.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   To be honest, it was probably the last (unintelligible).</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              We don’t need to get into that.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   No. What happens while I’m away on - away at the conferences (unintelligible)?</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              What happens in St. Louis stays in St. Louis.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   (Unintelligible) and the last thing Frank Googled was like what does Steve Urkel sound like?</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     No, I don’t.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Before we close out, I would like to thank once more Chad Rikansrud. He is a friend of the pod, a top tier terminal soft- subscriber. You like those extra episodes, right?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Oh, my God, I love those episodes. They’re the best. Yes, they were the best.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              We do put a lot of work into them.</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Yes.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              And people can contact you, follow you, how again?</p>
+<p>&nbsp;</p>
+<p>Chad Rikansrud:   Chad@rsmpartners.com is my email or @bigindiansmall is on the Twitters either one. Happy to talk to you about all your mainframe needs and wants.</p>
+<p>&nbsp;</p>
+<p>Frank De Gilio:     Desires.</p>
+<p>&nbsp;</p>
+<p>Jeff Bisti:              Old man Charlie (unintelligible) out now. It’s like right now, quick.</p>
+<p>&nbsp;</p>
+<p>Charlie Lawrence:You have been listening to Terminal Talk with Frank and Jeff. For questions or comments or if you have a topic you’d like to see covered on a future episode, direct all correspondence to contact@terminaltalk.net. That’s contact@terminaltalk.net. Until the next time, I’m Charlie Lawrence signing off.</p>
+<p>&nbsp;</p>
+<p>Recording:            Your conference is ending now. As requested by the host, please hang up.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>END</p>

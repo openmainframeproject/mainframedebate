@@ -1,0 +1,53 @@
+---
+layout: post
+title: 9 times out of 10 you should NOT buy LinuxONE - Part 2
+date: 2020-05-28
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '77095863'
+  _thumbnail_id: '1024'
+  timeline_notification: '1590701265'
+  geo_public: '0'
+  _publicize_job_id: '44812138541'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:10231072;s:61:"https://twitter.com/StevenDickens3/status/1266118997482835974";}}
+  _publicize_done_10182939: '1'
+  _wpas_done_10231072: '1'
+  publicize_twitter_user: StevenDickens3
+  _wpas_skip_10231076: '1'
+author:
+  login: stevendickens3
+  email: steven.dickens@hotmail.co.uk
+  display_name: StevenDickens3
+  first_name: Steven
+  last_name: Dickens
+permalink: "/2020/05/28/when-good-enough-is-not-good-enough/"
+---
+<p>In the <a href="https://mainframedebate.com/2020/05/28/9-times-out-of-10-you-should-not-buy-linuxone/">first blog</a> of this 2-part mini-series I put forward the analogy that choosing server and cloud consumption models was analogous to transportation. Commodity x86 servers were the car in my analogy, public cloud was represented by Uber and Lyft and LinuxONE was air transport.  The purpose of this blog is to explain, in very much the same way we make choices between when to fly or drive, when to choose the public cloud or LinuxONE for your Linux workload.</p>
+<p>Workload placement should be driven by thoughtful and conscious choices along four very deliberate vectors:</p>
+<ul>
+<li>Performance</li>
+<li>Scalability</li>
+<li>Availability</li>
+<li>Security</li>
+</ul>
+<p>Think of each of these vectors as a scale of 1 to 10.  Where 10 is the highest level or most demanding requirement.  In my first blog in this 2-part series, I went so far as to say 90% of the time you should choose the public cloud and <strong><u>NOT</u></strong> buy a LinuxONE server on-premises.  Let me break this down.  If you use the four-vectors as scales ranging from 1 to 10 then only if you score a workload as having a 10 out of 10 requirement should you consider running it on a LinuxONE server.  Let me unpack that by way of some uses cases.</p>
+<p><strong>Performance</strong></p>
+<p>You are building a mission-critical new application that will be the fulcrum of your digital transformation strategy.  You have architected your application to be containerized and cloud-native, however despite your best efforts the load on the application will be significant.  The database layer in your architecture will be hit hard, and performance is key.  You will have explored faster cloud instances, you may have even looked at ‘bare-metal-aaS’ servers in the hope they can deliver what you need, but your database has a 10 out of 10 performance requirement.</p>
+<p>Enter LinuxONE - at 2x (or more) in benchmarks against even the latest x86 servers LinuxONE can deliver the performance you need.  Where commodity cloud is inherently a scale-out model driven by increasing numbers of x86 based servers, LinuxONE has huge cache, the world’s fastest commercially available chip architecture, and a scale-up architecture designed to handle those 10 out of 10 uses cases where performance is demanded.</p>
+<p><strong>Scalability</strong></p>
+<p>Again, you are on the quest for digital transformation.  Your cloud-native application that will catapult your organization to the next level and will become the focal point for how your clients interact with you in a mobile-first manner is your baby.  Your new application will be tested in unforeseen ways as it comes on-line, customer demand will no doubt peak at strange hours of the day as clients interact via their phones.  While your Enterprise Architects are confident that they have architected the application to handle the majority of the spikes, doubt remains.  Nobody actually knows for sure what the peak of peaks will look like.  But your application absolutely must not fail, the very reputation of the company depends on it.  You simply cannot be in a position where you can’t handle the peak.  Put simply you have a 10 out of 10 scalability requirement.</p>
+<p>Enter LinuxONE – with a radically different architectural approach, where the design point is fundamentally different from that of commodity x86 servers found in the public cloud, LinuxONE is built to scale.   Based on the same chip architecture that drives the transactional engines of banks and payments providers LinuxONE is the go-to server for 10 out of 10 scalability requirements.  The scale-up approach inherent in LinuxONE is found in huge cache sizes, a dedicated I/O subsystem where I/O is handled separately from general compute instructions, and workload management processes are built-in that dedicate resources when workloads scale.</p>
+<p><strong>Availability</strong></p>
+<p>The centre-piece application of your digital transformation strategy that has both the eyes of the board and your clients on it mustn’t fail. The reputation of your organization is inextricably linked to the ability of your application to remain up and running.  The Net Promoter Score for your corporation is tied to how your IT delivery functions, put another way, you have a 10 out of 10 requirement for availability.  You can’t put your faith in availability zones in the public cloud, a server failover in a scale-out model is just not going to cut it for the stateful application layer that sits at the heart of your new cloud-native application.</p>
+<p>Enter LinuxONE - With a design point way beyond how commodity x86 servers are built, LinuxONE is designed to never fail.  With a Mean Time Between Failure measured in decades and a seven 9’s availability approach, LinuxONE is the most available Linux server on the market.  LinuxONE has no single point of failure, spare processors built-in, RAID style memory, and is earthquake tested to ensure it doesn’t fall over.</p>
+<p><strong>Security</strong></p>
+<p>As you look to digitally transform and pivot your client interaction to a more digitally infused model you will be holding more and more data points about your clients.  In a world where reputational risk is but one hack away, you are rightly paranoid about the security of your data. Quite simply you cannot afford to be hacked.  You have a 10 out of 10 requirement for security.</p>
+<p>Enter LinuxONE – LinuxONE is not built like commodity x86 servers and therefore is not susceptible to their vulnerabilities.  With a custom architecture designed from the silicon up to the hypervisor layer for security, LinuxONE is different.  Different is to be embraced when it comes to security.  With a Trusted Execution Environment built into the architecture and bespoke engineering found throughout LinuxONE is designed to never be compromised. Take for example the Hardware Security Module (HSM) found in LinuxONE.  The LinuxONE HSM is FIPS 140-2 Level 4 certified.  Why is this important, well if you want to guarantee your encryption keys are truly tamperproof then you need this certification, LinuxONE is the only server that has this certification.</p>
+<p><strong>Summary</strong></p>
+<p>When good enough is not good enough and your reputation depends on the delivery of the server architecture you choose, then the commodity cloud is not what you should choose.  In those 10 out 10 requirement scenarios where the commodity cloud just won’t cut it and you need more performance, availability, scalability, and security than the commodity cloud delivers go to <a href="http://www.ibm.com/LinuxONE">www.ibm.com/LinuxONE</a> to find out about what the server built differently.</p>
