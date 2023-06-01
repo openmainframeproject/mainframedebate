@@ -1,0 +1,11 @@
+main:
+  - title: "Videos"
+    url: /videos/
+  - title: "About"
+    url: /about/
+  - title: "Links to IBM Mainframe"
+    url: /links-to-ibm-mainframe/
+  - title: "Other Blogs"
+    url: /other-blogs/
+  - title: "People to follow on Twitter"
+    url: /people-to-follow-on-twitter/
